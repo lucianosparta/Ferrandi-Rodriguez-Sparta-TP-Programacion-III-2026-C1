@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../images/favicon.ico" type="image/icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>FRS Gaming — LogIn Admin</title>
+</head>
+<body class="bg-dark min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="card border-secondary p-4 container">
+        <div class="border-bottom border-secondary pb-3 mb-4">
+            <p class="text-purple mb-1 small fw-semibold text-uppercase ls">FRS Gaming</p>
+            <h1 class="text-white fs-5 fw-semibold mb-1">Iniciar Sesión</h1>
+        </div>
+        <div class="mb-3">
+            <label for="adminEmail" class="form-label text-secondary small text-uppercase fw-semibold ls">Email</label>
+            <input type="email" id="adminEmail" class="form-control bg-black text-white border-secondary" placeholder="admin@frsgaming.com" autocomplete="off">
+            <span class="text-danger d-none mt-1 field-error fs" id="emailError"></span>
+        </div>
+        <div class="mb-4">
+            <label for="adminPass" class="form-label text-secondary small text-uppercase fw-semibold ls">Contraseña</label>
+            <input type="password" id="adminPass" class="form-control bg-black text-white border-secondary" placeholder="Contraseña">
+        <span class="text-danger d-none mt-1 field-error fs" id="passError"></span>
+        </div>
+        <button class="btn btn-purple w-100 fw-semibold">Ingresar</button>
+        <!-- onclick="login()" -->
+        <div class="border-top border-secondary mt-4 pt-3 d-flex justify-content-between">
+            <span class="text-secondary fs">Ferrandi Rodriguez Sparta - Programación III</span>
+        </div>
+    </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="main.js"></script> -->
+</body>
+</html>

@@ -1,0 +1,79 @@
+.bg-gradiente { 
+    background-color: #0f0f0f; 
+    background-image: linear-gradient(135deg, #1a0933 0%, #0f0f0f 50%, #12062b 100%); 
+}
+
+.ls { letter-spacing: 0.1em; }
+
+.fs { font-size: 0.75rem; }
+
+h2.fs { font-size: 1rem; }
+
+.welcome-card {
+    width: 100%;
+    max-width: 460px;
+    background-color: #141414;
+    border-radius: 16px;
+}
+
+.border-purple { border-color: rgba(109, 40, 217, 0.35) !important; }
+
+.text-purple      { color: #8b5cf6; }
+.text-purple-muted { color: #c4b5fd; }
+
+.title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2.1rem;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.name-input::placeholder { color: #3a3a3a; }
+
+.name-input:focus {
+    background-color: #000 !important;
+    border-color: #6d28d9 !important;
+    color: #fff !important;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2) !important;
+}
+
+.btn-purple {
+    background-color: #6d28d9;
+    border: none;
+    color: #fff;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    padding: 0.65rem;
+}
+
+.btn-purple:hover {
+    background-color: #5b21b6;
+    color: #fff;
+}
+
+/* Medias querys */
+
+@media (max-width: 576px) {
+  .welcome-card { 
+        min-height: 100vh; 
+        border-radius: 0; 
+    }
+  .name-input { font-size: 16px; }
+}
+
+@media (max-width: 576px) {
+    .welcome-card {
+        min-height: 100vh !important;  
+        border-radius: 0 !important;        
+        padding: 3rem 1.75rem !important;
+    }
+    .name-input,
+    .btn-purple {
+        padding: 2rem !important;
+        font-size: 17px !important;
+    }
+    .title {
+        font-size: 2.6rem !important;
+        padding: 2rem !important;
+    }
+}

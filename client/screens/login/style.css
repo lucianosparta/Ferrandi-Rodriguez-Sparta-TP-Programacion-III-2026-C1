@@ -1,0 +1,36 @@
+.container {
+    width: 100%; 
+    max-width: 400px;
+}
+
+.ls { letter-spacing: 0.1em; }
+
+.fs { font-size: 0.75rem; }
+
+.text-purple { color: #8b5cf6; }
+
+.btn-purple {
+  background-color: #6d28d9;
+  border: none;
+  color: #fff;
+}
+
+.btn-purple:hover {
+  background-color: #5b21b6;
+  box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.2);
+  color: #fff;
+}
+
+.form-control:focus {
+  background-color: #000 !important;
+  border-color: #6d28d9 !important;
+  color: #fff !important;
+  box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.2) !important;
+}
+
+.form-control::placeholder { color: #3a3a3a; }
+
+.card { 
+    background-color: #141414 !important; 
+    border-radius: 8px; 
+}
