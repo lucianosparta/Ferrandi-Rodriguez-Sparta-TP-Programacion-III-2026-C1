@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FRS Gaming</title>
+    <link rel="stylesheet" href="productos.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+          <img
+            src="../images/logo.png"
+            alt="Logo"
+            width="30"
+            height="30"
+            class="d-inline-block align-text-top"
+          />
+          FRS Gaming
+        </a>
+        <div class="d-flex gap-2">
+          <button type="button" class="btn btn-primary btn-sm">Inicio</button>
+          <button type="button" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2">
+            Carrito <span class="badge bg-secondary">0</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="container my-5">
+      
+      <!-- DESCRIPCIÓN DE LA PANTALLA -->
+      <section class="text-center mb-5">
+        <h1 class="fw-bold">Catálogo</h1>
+        <p class="text-muted">Seleccioná una categoría y agrega productos al carrito</p>
+      </section>
+
+      <!-- PESTAÑAS DE CATEGORÍAS -->
+      <ul class="nav nav-tabs mb-4">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">CONSOLAS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-secondary" href="#">VIDEOJUEGOS</a>
+        </li>
+      </ul>
+
+      <!-- EXPOSICIÓN DE PRODUCTOS -->
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-5">
+        
+        <!-- TARJETA 1 -->
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="bg-light d-flex align-items-center justify-content-center py-4">
+              <img src="../images/logo.png" class="card-img-top w-50" alt="Consola Retro" />
+            </div>
+            <div class="card-body d-flex flex-column">
+              <p class="text-uppercase text-muted small mb-1 fw-semibold">Consola</p>
+              <h5 class="card-title fw-bold">Producto 1</h5>
+              <p class="card-text text-secondary small flex-grow-1">
+                Acá va una breve descripción de cada producto.
+              </p>
+              <h4 class="fw-bold my-3 text-dark">$0</h4>
+              <div class="mt-auto">
+                <button class="btn btn-primary btn-sm w-100 fw-bold">AÑADIR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 2 -->
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="bg-light d-flex align-items-center justify-content-center py-4">
+              <img src="../images/logo.png" class="card-img-top w-50" alt="Consola Portátil" />
+            </div>
+            <div class="card-body d-flex flex-column">
+              <p class="text-uppercase text-muted small mb-1 fw-semibold">Consola</p>
+              <h5 class="card-title fw-bold">Producto 2</h5>
+              <p class="card-text text-secondary small flex-grow-1">
+                Acá va una breve descripción de cada producto.
+              </p>
+              <h4 class="fw-bold my-3 text-dark">$0</h4>
+              <div class="mt-auto">
+                <button class="btn btn-primary btn-sm w-100 fw-bold">AÑADIR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 3 -->
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="bg-light d-flex align-items-center justify-content-center py-4">
+              <img src="../images/logo.png" class="card-img-top w-50" alt="Consola Clásica" />
+            </div>
+            <div class="card-body d-flex flex-column">
+              <p class="text-uppercase text-muted small mb-1 fw-semibold">Consola</p>
+              <h5 class="card-title fw-bold">Producto 3</h5>
+              <p class="card-text text-secondary small flex-grow-1">
+                Acá va una breve descripción de cada producto.
+              </p>
+              <h4 class="fw-bold my-3 text-dark">$0</h4>
+              <div class="mt-auto">
+                <button class="btn btn-primary btn-sm w-100 fw-bold">AÑADIR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TARJETA 4 -->
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="bg-light d-flex align-items-center justify-content-center py-4">
+              <img src="../images/logo.png" class="card-img-top w-50" alt="Consola HD" />
+            </div>
+            <div class="card-body d-flex flex-column">
+              <p class="text-uppercase text-muted small mb-1 fw-semibold">Consola</p>
+              <h5 class="card-title fw-bold">Producto 4</h5>
+              <p class="card-text text-secondary small flex-grow-1">
+                Acá va una breve descripción de cada producto.
+              </p>
+              <h4 class="fw-bold my-3 text-dark">$0</h4>
+              <div class="mt-auto">
+                <button class="btn btn-primary btn-sm w-100 fw-bold">AÑADIR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PAGINACIÓN -->
+      <nav aria-label="Navegación de páginas" class="d-flex justify-content-center mb-5">
+        <ul class="pagination mb-0 justify-content-center">
+          <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
+          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+        </ul>
+      </nav>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-body-tertiary border-top py-4 text-center">
+      <div class="container">
+        <p class="text-muted small mb-0">
+          Franco Ferreandi - Augusto Rodriguez - Luciano Sparta | Programación III - 2026
+        </p>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
