@@ -1,0 +1,8 @@
+body {
+    min-height: 100vh;
+  }
+  
+  #form-tarjeta {
+    border-top: 1px solid #ddd;
+    padding-top: 25px;
+  }
