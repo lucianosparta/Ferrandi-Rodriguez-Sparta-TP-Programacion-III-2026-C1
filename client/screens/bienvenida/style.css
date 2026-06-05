@@ -10,7 +10,7 @@
 
 .bg-gradiente-light {
     background-color: #f0f0f0e9;
-    background-image: linear-gradient(135deg, #a25c90 0%, #f0f0f0 50%, #87948a 100%);
+    background-image: linear-gradient(135deg, #c5a1bc 0%, #f0f0f0 50%, #717572 100%);;
 }
 
 .ls { letter-spacing: 0.1em; }
@@ -18,6 +18,8 @@
 .fs { font-size: 0.75rem; }
 
 h2.fs { font-size: 1rem; }
+
+a { text-decoration: none; color: inherit; }
 
 .welcome-card {
     width: 100%;
@@ -62,6 +64,7 @@ h2.fs { font-size: 1rem; }
 
 .btn-purple:hover {
     background-color: #5b21b6;
+    box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.2);
     color: #fff;
 }
 
