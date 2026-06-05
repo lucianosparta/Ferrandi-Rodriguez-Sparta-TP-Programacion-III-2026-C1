@@ -79,6 +79,7 @@ function validarFormulario() {
 }
 
 // mostrar form tarjeta
+
 metodoPago.addEventListener("change", () => {
 
   if (metodoPago.value === "tarjeta") {
@@ -88,9 +89,9 @@ metodoPago.addEventListener("change", () => {
   }
   validarFormulario();
 });
-// =========================
+
+
 // NOMBRE
-// =========================
 
 nombre.addEventListener("input", () => {
 
@@ -108,9 +109,7 @@ nombre.addEventListener("input", () => {
   validarFormulario()
 });
 
-// =========================
 // APELLIDO
-// =========================
 
 apellido.addEventListener("input", () => {
 
@@ -128,9 +127,7 @@ apellido.addEventListener("input", () => {
   validarFormulario()
 });
 
-// =========================
 // NUMERO TARJETA
-// =========================
 
 numeroTarjeta.addEventListener("input", () => {
 
@@ -153,9 +150,8 @@ numeroTarjeta.addEventListener("input", () => {
   validarFormulario()
 });
 
-// =========================
+
 // TITULAR
-// =========================
 
 titular.addEventListener("input", () => {
 
@@ -173,9 +169,8 @@ titular.addEventListener("input", () => {
   validarFormulario()
 });
 
-// =========================
+
 // VENCIMIENTO
-// =========================
 
 vencimiento.addEventListener("input", () => {
 
@@ -208,9 +203,8 @@ vencimiento.addEventListener("input", () => {
   validarFormulario()
 });
 
-// =========================
+
 // CVV
-// =========================
 
 cvv.addEventListener("input", () => {
 
@@ -233,9 +227,8 @@ cvv.addEventListener("input", () => {
   validarFormulario()
 });
 
-// =========================
+
 // DOCUMENTO
-// =========================
 
 documento.addEventListener("input", () => {
 
@@ -246,9 +239,9 @@ documento.addEventListener("input", () => {
   validarFormulario()
     });
 
-// =========================
+
 // telefono
-// =========================
+
 telefono.addEventListener("input", () => {
 
 telefono.value =
