@@ -17,8 +17,7 @@ function enter() {
 
     localStorage.setItem('nombreUsuario', nombre);
     alert(`¡Bienvenido, ${nombre}! 🎮`);
-  // Redirigir a la tienda:
-  // window.location.href = 'tienda.html?nombre=' + encodeURIComponent(name);
+    window.location.href = '../productos/productos.html';
 };
  
 document.getElementById('cliente-nombre').addEventListener('keydown', (e) => {
