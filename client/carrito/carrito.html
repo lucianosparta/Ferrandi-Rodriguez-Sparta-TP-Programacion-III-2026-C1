@@ -31,214 +31,190 @@
         FRS Gaming
       </a>
 
-      <button class="btn btn-outline-secondary">
-        🛒 Carrito
-      </button>
-
     </div>
   </nav>
 
   <!-- CONTENIDO -->
-  <main class="container mt-5 mb-5">
+  <main class="container my-5 flex-grow-1">
 
-    <div class="row g-4">
-
-      <!-- PRODUCTOS -->
-      <div class="col-lg-8">
-
-        <h2 class="mb-4 fw-bold">Carrito</h2>
-
-        <!-- PRODUCTO 1 -->
-        <div class="cart-card bg-white rounded-4 shadow-sm border-0 p-4 mb-4">
-
-          <div class="row align-items-center">
-
-            <div class="col-md-3 text-center">
-              <img
-                src="https://cf.geekdo-images.com/NEbmFFGhKwegIryUArgw6w__imagepage/img/3gXyL1silSSUBcG96MtGhBPx3B8=/fit-in/900x600/filters:no_upscale():strip_icc()/pic7110034.jpg"
-                class="img-fluid product-img"
-                alt=""
-              />
-            </div>
-
-            <div class="col-md-6">
-
-              <p class="text-uppercase text-muted small mb-1 fw-semibold">
-                Juego de mesa
-              </p>
-
-              <h4 class="fw-bold">
-                Nemesis Lockdown
-              </h4>
-
-              <p class="text-secondary fw-semibold">
-                En stock
-              </p>
-
-              <p class="text-muted">
-                Juego cooperativo de estrategia y supervivencia.
-              </p>
-
-              <div class="d-flex gap-2">
-
-                <button class="btn btn-outline-danger btn-sm">
-                  Eliminar
-                </button>
-
-              </div>
-
-            </div>
-
-            <div class="col-md-3 text-end">
-
-              <h4 class="fw-bold text-dark precio">
-                57.99
-              </h4>
-
-              <div class="input-group quantity-box ms-auto mt-3">
-
+    <h1 class="fw-bold mb-4">
+      Carrito de compras
+    </h1>
+  
+    <div id="contenedor-tabla" class="table-responsive bg-white rounded-4 shadow-sm p-4">
+  
+      <table class="table align-middle">
+  
+        <thead>
+  
+          <tr>
+  
+            <th>Producto</th>
+  
+            <th>Precio</th>
+  
+            <th>Cantidad</th>
+  
+            <th>Sub total</th>
+  
+            <th></th>
+  
+          </tr>
+  
+        </thead>
+  
+        <tbody>
+  
+          <!-- PRODUCTO 1 -->
+          <tr class="producto">
+  
+            <td>
+              Nemesis Lockdown
+            </td>
+  
+            <td class="precio">
+              57.99
+            </td>
+  
+            <td>
+  
+              <div class="d-flex align-items-center gap-2">
+  
                 <button class="btn btn-outline-secondary minus">
                   -
                 </button>
-
+  
                 <input
                   type="text"
                   class="form-control text-center quantity"
                   value="1"
                   readonly
-                />
-
+                  style="width: 60px;"
+                >
+  
                 <button class="btn btn-outline-secondary plus">
                   +
                 </button>
-
+  
               </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- PRODUCTO 2 -->
-        <div class="cart-card bg-white rounded-4 shadow-sm border-0 p-4">
-
-          <div class="row align-items-center">
-
-            <div class="col-md-3 text-center">
-              <img
-                src="https://cf.geekdo-images.com/bt-s6gbhhI46VSIgsxyOIw__imagepage/img/e8hBSdd_Pio2iW04quXrQnce0p4=/fit-in/900x600/filters:no_upscale():strip_icc()/pic7375234.jpg"
-                class="img-fluid product-img"
-                alt=""
-              />
-            </div>
-
-            <div class="col-md-6">
-
-              <p class="text-uppercase text-muted small mb-1 fw-semibold">
-                Juego de mesa
-              </p>
-
-              <h4 class="fw-bold">
-                Nemesis Retaliation
-              </h4>
-
-              <p class="text-secondary fw-semibold">
-                Últimas unidades
-              </p>
-
-              <p class="text-muted">
-                Juego de terror y ciencia ficción.
-              </p>
-
-              <div class="d-flex gap-2">
-
-                <button class="btn btn-outline-danger btn-sm">
-                  Eliminar
-                </button>
-
-              </div>
-
-            </div>
-
-            <div class="col-md-3 text-end">
-
-              <h4 class="fw-bold text-dark precio">
-                189.95
-              </h4>
-
-              <div class="input-group quantity-box ms-auto mt-3">
-
+  
+            </td>
+  
+            <td class="subtotal fw-bold">
+              $57.99
+            </td>
+  
+            <td>
+  
+              <button class="btn btn-danger eliminar">
+                🗑
+              </button>
+  
+            </td>
+  
+          </tr>
+  
+          <!-- PRODUCTO 2 -->
+          <tr class="producto">
+  
+            <td>
+              Nemesis Retaliation
+            </td>
+  
+            <td class="precio">
+              189.95
+            </td>
+  
+            <td>
+  
+              <div class="d-flex align-items-center gap-2">
+  
                 <button class="btn btn-outline-secondary minus">
                   -
                 </button>
-
+  
                 <input
                   type="text"
                   class="form-control text-center quantity"
                   value="1"
                   readonly
-                />
-
+                  style="width: 60px;"
+                >
+  
                 <button class="btn btn-outline-secondary plus">
                   +
                 </button>
-
+  
               </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- RESUMEN -->
-      <div class="col-lg-4">
-
-        <div class="summary-box bg-white rounded-4 shadow-sm p-4">
-
-          <h4 class="fw-bold">
-            Resumen
-          </h4>
-
-          <hr>
-
-          <div class="d-flex justify-content-between">
-            <span>Productos</span>
-            <span id="cantidad-productos">2</span>
-          </div>
-
-          <div class="d-flex justify-content-between mt-2">
-            <span>Subtotal</span>
-            <span id="subtotal">$247.94</span>
-          </div>
-
-          <div class="d-flex justify-content-between mt-2">
-            <span>Envío</span>
-            <span>$10</span>
-          </div>
-
-          <hr>
-
-          <div class="d-flex justify-content-between fw-bold fs-5">
-            <span>Total</span>
-            <span id="total">$257.94</span>
-          </div>
-
-          <form action="../pagina-intermedia/pagina-intermedia.html">
-            <button id="btn-pago" class="btn btn-primary w-100 mt-4 fw-bold">
-              Proceder al pago
-            </button>
-          </form>
-
-        </div>
-
-      </div>
-
+  
+            </td>
+  
+            <td class="subtotal fw-bold">
+              $189.95
+            </td>
+  
+            <td>
+  
+              <button class="btn btn-danger eliminar">
+                🗑
+              </button>
+  
+            </td>
+  
+          </tr>
+  
+        </tbody>
+  
+      </table>
     </div>
 
+      <p
+        id="mensaje-vacio"
+        class="text-center text-dark fw-bold fs-5 d-none"
+      >
+        No hay productos en el carrito
+      </p>
+  
+      <!-- FOOTER CARRITO -->
+      <div class="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-3">
+  
+        <!-- IZQUIERDA -->
+        <a
+          href="../productos/productos.html"
+          class="btn btn-warning fw-bold"
+        >
+          ← Volver al inicio
+        </a>
+  
+        <!-- DERECHA -->
+        <div class="d-flex align-items-center gap-4">
+  
+          <h4 class="fw-bold mb-0">
+            Total:
+            <span id="total">
+              $247.94
+            </span>
+          </h4>
+  
+          <form action="../pagina-intermedia/pagina-intermedia.html">
+  
+            <button
+              id="btn-pago"
+              class="btn btn-primary fw-bold px-4"
+            >
+  
+              Proceder al pago
+  
+            </button>
+  
+          </form>
+  
+        </div>
+  
+      </div>
+  
+    </div>
+  
   </main>
 
   <!-- FOOTER -->
