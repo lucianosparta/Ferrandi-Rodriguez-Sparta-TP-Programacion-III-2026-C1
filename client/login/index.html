@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="theme.js"></script>
+    <title>FRS Gaming - LogIn Admin</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <img src="../images/icono.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top"/>
+                <strong>FRS Gaming</strong> 
+            </a>
+            <div class="d-flex gap-2">
+                <button type="button" id="theme" class="btn btn-purple btn-sm" onclick="cambiarTema()">
+                    <span class="material-symbols-outlined d-flex">invert_colors</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <main id="main-login" class="bg-gradiente-light d-flex align-items-center justify-content-center">
+        <div id="card" class="card-light border-purple p-4 container">
+            <div class="border-secondary pb-3 mb-2">
+                <p class="text-purple mb-1 small fw-semibold text-uppercase ls">FRS Gaming</p>
+                <h1 id="h1-title" class="text-black fs-7 fw-semibold mb-1">Iniciar Sesión</h1>
+            </div>
+            <div class="mb-3">
+                <label for="adminEmail" class="form-label text-secondary small text-uppercase fw-semibold ls">Email</label>
+                <input type="email" id="adminEmail" class="form-control email-input bg-white text-black border-secondary" placeholder="Email" autocomplete="off">
+                <span class="text-danger d-none mt-1 field-error fs" id="emailError"></span>
+            </div>
+            <div class="mb-4">
+                <label for="adminPass" class="form-label text-secondary small text-uppercase fw-semibold ls">Contraseña</label>
+                <input type="password" id="adminPass" class="form-control pass-input bg-white text-black border-secondary" placeholder="Contraseña" autocomplete="off">
+                <span class="text-danger d-none mt-1 field-error fs" id="passError"></span>
+            </div>
+            <button class="btn btn-purple w-100 fw-semibold mb-3" onclick="login()">INGRESAR</button>
+            <button class="btn btn-secondary w-100 fw-semibold" onclick="">Acceso Rápido</button>
+        </div>
+    </main>
+    <footer class="bg-body-tertiary border-top py-4 text-center">
+        <div>
+            <p class="text-muted small mb-0">
+            Franco Ferrandi - Augusto Rodriguez - Luciano Sparta | Programación III - 2026
+            </p>
+        </div>
+    </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+  <script src="main.js"></script> 
+</body>
+</html>

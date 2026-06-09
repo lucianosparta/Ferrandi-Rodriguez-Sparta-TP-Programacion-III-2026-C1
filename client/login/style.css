@@ -1,0 +1,76 @@
+.container {
+    width: 100%; 
+    max-width: 400px;
+}
+
+#main-login {
+    flex: 1;
+}
+
+.bg-gradiente { 
+    background-color: #0f0f0f; 
+    background-image: linear-gradient(135deg, #1a0933 0%, #0f0f0f 50%, #12062b 100%); 
+}
+
+.bg-gradiente-light {
+    background-color: #f0f0f0e9;
+    background-image: linear-gradient(135deg, #c5a1bc 0%, #f0f0f0 50%, #717572 100%);
+}
+
+.ls { letter-spacing: 0.1em; }
+
+.fs { font-size: 0.75rem; }
+
+.text-purple { color: #6637d3; }
+
+.border-purple { border-color: rgba(109, 40, 217, 0.35) !important; }
+
+.btn-purple {
+    background-color: #6d28d9;
+    border: none;
+    color: #fff;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    padding: 0.65rem;
+}
+
+.btn-purple:hover {
+    background-color: #5b21b6;
+    box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.2);
+    color: #fff;
+}
+
+.form-control:focus {
+    border-color: #6d28d9 !important;
+    box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.2) !important;
+}
+
+.form-control::placeholder { color: #3a3a3a; }
+
+.card { 
+    background-color: #141414 !important; 
+    border-radius: 8px; 
+}
+
+.card-light {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
+
+/* Medias querys */
+
+@media (max-width: 576px) {
+    .card {
+        min-height: 100vh !important;  
+        border-radius: 0 !important;        
+        padding: 3rem 1.75rem !important;
+    }
+    .email-input, .pass-input, .btn-purple {
+        padding: 2rem !important;
+        font-size: 17px !important;
+    }
+    .title {
+        font-size: 2.6rem !important;
+        padding: 2rem !important;
+    }
+}
