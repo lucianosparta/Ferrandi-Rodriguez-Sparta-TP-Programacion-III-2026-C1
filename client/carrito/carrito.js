@@ -1,41 +1,69 @@
 const plusButtons = document.querySelectorAll(".plus");
+
 const minusButtons = document.querySelectorAll(".minus");
+
+const eliminarButtons = document.querySelectorAll(".eliminar");
+
+const btnPago = document.getElementById("btn-pago");
+
+const mensajeVacio = document.getElementById("mensaje-vacio");
+
+const contenedorTabla = document.getElementById("contenedor-tabla");
+
+const themeToggle = document.getElementById("theme-toggle");
+
+// Actualizar totales
 
 function actualizarTotales() {
 
-  let subtotal = 0;
-  let cantidadProductos = 0;
+  let total = 0;
 
-  const productos = document.querySelectorAll(".cart-card");
+  const productos = document.querySelectorAll(".producto");
 
   productos.forEach(producto => {
 
-    const precio = parseFloat(
-      producto.querySelector(".precio").textContent
-    );
+    const precio = parseFloat(producto.querySelector(".precio").textContent);
 
-    const cantidad = parseInt(
-      producto.querySelector(".quantity").value
-    );
+    const cantidad = parseInt(producto.querySelector(".quantity").value);
 
-    subtotal += precio * cantidad;
+    const subtotal = precio * cantidad;
 
-    cantidadProductos += cantidad;
+    producto.querySelector(".subtotal").textContent = "$" + subtotal.toFixed(2);
 
+    total += subtotal;
   });
 
-  const envio = 10;
+  document.getElementById("total").textContent = "$" + total.toFixed(2);
 
-  document.getElementById("cantidad-productos").textContent =
-    cantidadProductos;
+  // Carrito vacio
 
-  document.getElementById("subtotal").textContent =
-    "$" + subtotal.toFixed(2);
+  if (productos.length === 0) {
 
-  document.getElementById("total").textContent =
-    "$" + (subtotal + envio).toFixed(2);
+    mensajeVacio.classList.remove("d-none");
+  
+    contenedorTabla.classList.add("d-none");
+  
+    btnPago.disabled = true;
+  
+    btnPago.classList.remove("btn-primary");
+  
+    btnPago.classList.add("btn-secondary");
+  
+  } else {
 
+    mensajeVacio.classList.add("d-none");
+
+    contenedorTabla.classList.remove("d-none");;
+  
+    btnPago.disabled = false;
+  
+    btnPago.classList.remove("btn-secondary");
+  
+    btnPago.classList.add("btn-primary");
+  }
 }
+
+// BOTON +
 
 plusButtons.forEach(button => {
 
@@ -45,12 +73,11 @@ plusButtons.forEach(button => {
       button.parentElement.querySelector(".quantity");
 
     input.value++;
-
     actualizarTotales();
-
   });
-
 });
+
+// BOTON -
 
 minusButtons.forEach(button => {
 
@@ -66,9 +93,50 @@ minusButtons.forEach(button => {
       actualizarTotales();
 
     }
+  });
+});
+
+// Eliminar producto
+
+eliminarButtons.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    const fila =
+      button.closest(".producto");
+
+    fila.remove();
+
+    actualizarTotales();
 
   });
 
 });
+
+
+  // Cambio modo claro y modo oscuro
+  themeToggle.addEventListener("click", () => {
+
+    const html = document.documentElement;
+  
+    const currentTheme = html.getAttribute("data-bs-theme");
+  
+    if (currentTheme === "dark") {
+  
+      html.setAttribute("data-bs-theme", "light");
+  
+      themeToggle.textContent = "🌙";
+  
+    } else {
+  
+      html.setAttribute("data-bs-theme", "dark");
+  
+      themeToggle.textContent = "☀️";
+  
+    }
+  
+  });
+
+// Inicializar
 
 actualizarTotales();

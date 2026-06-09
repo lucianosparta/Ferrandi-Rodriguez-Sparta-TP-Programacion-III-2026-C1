@@ -20,6 +20,13 @@ const telefono = document.getElementById("telefono");
 
 const boton = document.getElementById("realizar-pedido");
 
+const modalElemento = document.getElementById("modalConfirmar");
+
+const modal = new bootstrap.Modal(modalElemento);
+
+const confirmarCompra = document.getElementById("confirmarCompra");
+
+const themeToggle = document.getElementById("theme-toggle");
 
 function mostrarError(input, mensaje) {
 
@@ -83,13 +90,12 @@ function validarFormulario() {
 metodoPago.addEventListener("change", () => {
 
   if (metodoPago.value === "tarjeta") {
-    formTarjeta.classList.remove("d-none");
+    formTarjeta.classList.remove("d-none"); // d-none clase de Bootstrap que sirve para ocultar un elemento -> intermente hace display: none;
   } else {
     formTarjeta.classList.add("d-none");
   }
   validarFormulario();
 });
-
 
 // NOMBRE
 
@@ -260,4 +266,42 @@ if (
   ocultarError(telefono);
 }
 validarFormulario();
+});
+
+boton.addEventListener("click", () => {
+
+  if (!boton.disabled) {
+
+    modal.show();
+
+  }
+});
+
+confirmarCompra.addEventListener("click", () => {
+
+  window.location.href =
+    "../ticket/ticket.html";
+
+});
+
+themeToggle.addEventListener("click", () => {
+
+  const html = document.documentElement;
+
+  const currentTheme = html.getAttribute("data-bs-theme");
+
+  if (currentTheme === "dark") {
+
+    html.setAttribute("data-bs-theme", "light");
+
+    themeToggle.textContent = "🌙";
+
+  } else {
+
+    html.setAttribute("data-bs-theme", "dark");
+
+    themeToggle.textContent = "☀️";
+
+  }
+
 });
