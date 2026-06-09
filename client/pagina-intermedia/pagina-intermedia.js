@@ -26,6 +26,8 @@ const modal = new bootstrap.Modal(modalElemento);
 
 const confirmarCompra = document.getElementById("confirmarCompra");
 
+const themeToggle = document.getElementById("theme-toggle");
+
 function mostrarError(input, mensaje) {
 
   let helper =
@@ -279,5 +281,27 @@ confirmarCompra.addEventListener("click", () => {
 
   window.location.href =
     "../ticket/ticket.html";
+
+});
+
+themeToggle.addEventListener("click", () => {
+
+  const html = document.documentElement;
+
+  const currentTheme = html.getAttribute("data-bs-theme");
+
+  if (currentTheme === "dark") {
+
+    html.setAttribute("data-bs-theme", "light");
+
+    themeToggle.textContent = "🌙";
+
+  } else {
+
+    html.setAttribute("data-bs-theme", "dark");
+
+    themeToggle.textContent = "☀️";
+
+  }
 
 });

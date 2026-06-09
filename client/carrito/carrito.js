@@ -10,40 +10,32 @@ const mensajeVacio = document.getElementById("mensaje-vacio");
 
 const contenedorTabla = document.getElementById("contenedor-tabla");
 
-// ACTUALIZAR TOTALES
+const themeToggle = document.getElementById("theme-toggle");
+
+// Actualizar totales
 
 function actualizarTotales() {
 
   let total = 0;
 
-  const productos =
-    document.querySelectorAll(".producto");
+  const productos = document.querySelectorAll(".producto");
 
   productos.forEach(producto => {
 
-    const precio =
-      parseFloat(
-        producto.querySelector(".precio").textContent
-      );
+    const precio = parseFloat(producto.querySelector(".precio").textContent);
 
-    const cantidad =
-      parseInt(
-        producto.querySelector(".quantity").value
-      );
+    const cantidad = parseInt(producto.querySelector(".quantity").value);
 
-    const subtotal =
-      precio * cantidad;
+    const subtotal = precio * cantidad;
 
-    producto.querySelector(".subtotal").textContent =
-      "$" + subtotal.toFixed(2);
+    producto.querySelector(".subtotal").textContent = "$" + subtotal.toFixed(2);
 
     total += subtotal;
   });
 
-  document.getElementById("total").textContent =
-    "$" + total.toFixed(2);
+  document.getElementById("total").textContent = "$" + total.toFixed(2);
 
-  // CARRITO VACÍO
+  // Carrito vacio
 
   if (productos.length === 0) {
 
@@ -104,7 +96,7 @@ minusButtons.forEach(button => {
   });
 });
 
-// ELIMINAR PRODUCTO
+// Eliminar producto
 
 eliminarButtons.forEach(button => {
 
@@ -121,6 +113,30 @@ eliminarButtons.forEach(button => {
 
 });
 
-// INICIALIZAR
+
+  // Cambio modo claro y modo oscuro
+  themeToggle.addEventListener("click", () => {
+
+    const html = document.documentElement;
+  
+    const currentTheme = html.getAttribute("data-bs-theme");
+  
+    if (currentTheme === "dark") {
+  
+      html.setAttribute("data-bs-theme", "light");
+  
+      themeToggle.textContent = "🌙";
+  
+    } else {
+  
+      html.setAttribute("data-bs-theme", "dark");
+  
+      themeToggle.textContent = "☀️";
+  
+    }
+  
+  });
+
+// Inicializar
 
 actualizarTotales();
