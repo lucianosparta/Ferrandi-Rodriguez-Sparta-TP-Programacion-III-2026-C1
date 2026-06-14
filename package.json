@@ -21,6 +21,8 @@
   "homepage": "https://github.com/lucianosparta/Ferrandi-Rodriguez-Sparta-TP-Programacion-III-2026-C1#readme",
   "dependencies": {
     "dotenv": "^17.4.2",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "mysql2": "^3.22.5",
+    "sequelize": "^6.37.8"
   }
 }
