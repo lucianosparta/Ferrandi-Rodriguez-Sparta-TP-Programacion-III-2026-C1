@@ -9,7 +9,8 @@ const app = express();
 // Config
 app.use(express.json());
 
-const productosRoutes = require("./routes/productos.routes");
+const productosRoutes = require("./productos/productos.routes");
+const ProductModel = require("./productos/productos.model");
 
 // Rutas
 app.use("/productos", productosRoutes);
@@ -21,6 +22,7 @@ const portDb = process.env.DB_PORT;
 (async () => {
   try {
     await conexion.authenticate();
+    await conexion.sync({ alter: true });
 
     console.log("Base de datos conectada");
     console.log(`Base de datos funcionando en puerto ${portDb}`);
