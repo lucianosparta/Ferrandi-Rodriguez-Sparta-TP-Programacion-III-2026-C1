@@ -4,7 +4,7 @@ const { Sequelize } = require("sequelize");
 // 1° = db(nombre de la DB):"2026-c1", 2° = usr: "root", 3° = pass: "123456", 4° = PARAMETROS OPCIONALES definir host dialecto y puerto
 const conexion = new Sequelize(
     // yo los configure en el archivo .env -> cada uno en su proyecto deberia ponerlo!
-    process.env.DB_NAME, //2026-c1
+    process.env.DB_NAME, //2026-c1 hay que crearla en el workbench
     process.env.DB_USER, //root
     process.env.DB_PASSWORD, // 123456(esa fue la contraseña del profesor) o ""(si es vacio)
     {
