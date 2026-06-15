@@ -10,11 +10,17 @@ const app = express();
 app.use(express.json());
 
 const productosRoutes = require("./productos/productos.routes");
+
+//Modelos de la DB
 const ProductModel = require("./productos/productos.model");
+const SalesModel = require("./ventas/ventas.model");
+const UserModel = require("./usuarios/usuarios.model");
+const DetailSaleModel = require("./detalle-venta/detalle-venta.model");
 
 // Rutas
 app.use("/productos", productosRoutes);
 
+// Definicion de puertos 
 const port = process.env.PORT || 3000;
 const portDb = process.env.DB_PORT;
 
