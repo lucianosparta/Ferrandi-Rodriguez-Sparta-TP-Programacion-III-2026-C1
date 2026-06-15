@@ -1,30 +1,32 @@
-// 1. Crear el servidor
-const express = require("express");
-const router = express.Router();
+const {
+  buscarProductoActivos,
+  buscarTodosLosProductos,
+  buscarProductoPorId,
+  crearProducto,
+  modificarProducto,
+  desactivarProducto,
+  activarProducto
+} = require("./productos.controller");
 
-// 2. Definir rutas
-// 3. Definir acciones (métodos HTTP) (GET, POST, PUT, PATCH, DELETE)
-// router.accion("ruta", (req, res) => { // lógica });
-router.get("/productos", (req, res) => {
-  // QueryParams
-  const queryParams = req.query;
-  console.log(queryParams);
-  const page = queryParams.page || 1;
-  const limit = queryParams.limit || 10;
-  console.log(page, limit);
+// defino el router
+const productoRouter = require("express").Router();
 
-  // SIEMPRE AL FINAL, NO SE PUEDE MODIFICAR DESPUÉS
-  res.send("productos en el send");
-});
+// const express = require("express");
+// const router = express.Router();
 
-router.get("/consolas", (req, res) => {
-  res.send("consolas");
-});
+// cliente
+productoRouter.get("/", buscarProductoActivos);
+// Solo para Admin
+productoRouter.get("/admin", buscarTodosLosProductos);
 
-router.get("/video-juegos", (req, res) => {
-  res.send("video-juegos");
-});
+productoRouter.get("/:id", buscarProductoPorId);
 
+productoRouter.post("/", crearProducto);
 
-// EXPORTAR ROUTER
-module.exports = router;
+productoRouter.put("/:id", modificarProducto);
+
+productoRouter.patch("/:id/desactivar", desactivarProducto);
+
+productoRouter.patch("/:id/activar", activarProducto);
+
+module.exports = productoRouter;

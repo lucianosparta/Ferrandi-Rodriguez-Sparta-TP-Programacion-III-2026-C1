@@ -9,21 +9,30 @@ const ProductModel = conexion.define("Producto", {
   },
   nombre: {
     type: DataTypes.STRING,
+    allowNull: false,
   },
   descripcion: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
+    allowNull: false,
   },
   categoria: {
     type: DataTypes.ENUM(
         "consolas",
         "video-juegos"
     ),
+    allowNull: false,
   },
   precio: {
     type: DataTypes.FLOAT,
+    allowNull: false,
   },
   stock: {
     type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  activo: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: true,
   },
   imagen: {
     type: DataTypes.STRING,

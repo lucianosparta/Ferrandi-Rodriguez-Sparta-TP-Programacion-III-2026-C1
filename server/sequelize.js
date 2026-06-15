@@ -1,10 +1,10 @@
 const { Sequelize } = require("sequelize");
 
 // CONEXION con METODO SEQUELIZE, hay otro metodos de conexion
-// 1° = db(nombre de la DB):"2026-c1", 2° = usr: "root", 3° = pass: "123456", 4° = PARAMETROS OPCIONALES definir host dialecto y puerto
+// 1° = db(nombre de la DB):"frs_gaming", 2° = usr: "root", 3° = pass: "123456", 4° = PARAMETROS OPCIONALES definir host dialecto y puerto
 const conexion = new Sequelize(
     // yo los configure en el archivo .env -> cada uno en su proyecto deberia ponerlo!
-    process.env.DB_NAME, //2026-c1 hay que crearla en el workbench
+    process.env.DB_NAME, //frs_gaming -> o 2026-c1(clase del profesor) hay que crearla en el workbench (ver readme del back)
     process.env.DB_USER, //root
     process.env.DB_PASSWORD, // 123456(esa fue la contraseña del profesor) o ""(si es vacio)
     {
@@ -16,7 +16,7 @@ const conexion = new Sequelize(
 
 // CONEXION con METODO STRING -> SE ADAPTA A DISTINTOS MOTORES
 // const conexion = new Sequelize({dialect}://{usuario}:{contraseña}@{host}:{puerto}/{nombreDB})
-// const conexion = new Sequelize("mysql://root:123456@localhost:3307/2026-c1");
+// const conexion = new Sequelize("mysql://root:123456@localhost:3307/frs_gaming");
 
 
 module.exports = conexion
