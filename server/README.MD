@@ -13,7 +13,19 @@ ESTRUCTURA PENSADA PARA LA BASE DE DATOS:
     -ID (int pk)
     -nombre (varchar)
     -apellido (varchar)
-    -usuario (varchar)
+    -usuario (varchar unique)
     -email (varchar unique)
     -password (varchar) -> hashear
-    -createdAt (datetime)
+
+3) VENTAS: 
+    -id (int pk)
+    -usuario (string)
+    -total
+
+4) DETALLE_VENTA:
+    -id (int pk)
+    -venta_id (int fk)
+    -producto_id (int fk)
+    -cantidad (int)
+    -precio_unitario (float)
+    -subtotal (float)
