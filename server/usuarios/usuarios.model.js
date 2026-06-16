@@ -21,6 +21,10 @@ const UserModel = conexion.define("Usuario", {
   },
   password: {
     type: DataTypes.STRING,
+  },
+  activo: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: true,
   }
 });
 

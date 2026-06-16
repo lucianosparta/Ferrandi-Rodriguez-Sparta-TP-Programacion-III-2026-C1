@@ -7,7 +7,7 @@ const SalesModel = conexion.define("Venta", {
     autoIncrement: true,
     primaryKey: true,
   },
-  usuario: {
+  nombre_cliente: {
     type: DataTypes.STRING,
   },
   total: {

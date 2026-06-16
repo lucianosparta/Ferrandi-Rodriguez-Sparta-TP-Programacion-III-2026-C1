@@ -10,18 +10,20 @@ MAS abajo se ve como crear la tabla inicial para que funcione
     -stock (int)
     -imagen(varchar -> url si es que usamos o si vamos a almacenar)
 
-2) USUARIOS: 
+2) USUARIOS (no son los clientes, son los administradores): 
     -ID (int pk)
     -nombre (varchar)
     -apellido (varchar)
     -usuario (varchar unique)
     -email (varchar unique)
     -password (varchar) -> hashear
+    -activo (boolean)
 
 3) VENTAS: 
     -id (int pk)
-    -usuario (string)
-    -total
+    -nombre_cliente (string)
+    -total (float)
+    -fecha -> la base autogenera el created at (fecha)
 
 4) DETALLE_VENTA:
     -id (int pk)
