@@ -56,9 +56,9 @@ const {
     const desactivarProducto = async (req, res) => {
         const { id } = req.params;
     
-        const eliminado = await desactivarProductoDB(id);
+        const desactivado = await desactivarProductoDB(id);
     
-        res.send(eliminado);
+        res.send(desactivado);
     };
   
     // PATCH /productos/:id/activar
