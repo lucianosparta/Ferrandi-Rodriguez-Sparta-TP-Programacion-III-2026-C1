@@ -1,7 +1,8 @@
 const conexion = require("../sequelize");
 const { DataTypes } = require("sequelize");
 
-const SalesModel = conexion.define("Venta", {
+const SalesModel = conexion.define(
+  "Venta", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -12,8 +13,11 @@ const SalesModel = conexion.define("Venta", {
   },
   total: {
     type: DataTypes.FLOAT,
-  },
-});
+  }},
+  {
+    tableName: "ventas"
+  }
+);
 
 
 module.exports = SalesModel;
