@@ -1,7 +1,8 @@
 const conexion = require("../sequelize");
 const { DataTypes } = require("sequelize");
 
-const ProductModel = conexion.define("Producto", {
+const ProductModel = conexion.define(
+  "Producto", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -18,7 +19,7 @@ const ProductModel = conexion.define("Producto", {
   categoria: {
     type: DataTypes.ENUM(
         "consolas",
-        "video-juegos"
+        "videojuegos"
     ),
     allowNull: false,
   },
@@ -36,8 +37,11 @@ const ProductModel = conexion.define("Producto", {
   },
   imagen: {
     type: DataTypes.STRING,
-  },
-});
+  }},
+  {
+    tableName: "productos"
+  }
+);
 
 
 module.exports = ProductModel;
