@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/icon">
     <title>FRS Gaming</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -26,9 +28,9 @@
           />
           FRS Gaming
         </a>
-        <div class="d-flex gap-2">
-          <button type="button" class="btn btn-primary btn-sm">Inicio</button>
-        </div>
+        <button type="button" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2" onclick="cambiarTema()">
+            <span class="material-symbols-outlined d-flex">invert_colors</span>
+          </button>
       </div>
     </nav>
 
@@ -96,7 +98,7 @@
       <!-- BOTONES DE ACCIÓN -->
       <div class="d-flex justify-content-center gap-3 mt-4">
         <button class="btn btn-primary px-4 fw-bold">DESCARGAR PDF</button>
-        <button class="btn btn-outline-secondary px-4 fw-bold">SALIR</button>
+        <button class="btn btn-outline-secondary px-4 fw-bold"><a style="text-decoration: none;" href="../bienvenida/index.html">SALIR</a></button>
       </div>
 
     </main>

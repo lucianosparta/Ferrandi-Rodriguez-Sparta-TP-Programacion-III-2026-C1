@@ -36,8 +36,7 @@ function login() {
     if (!valid) return;
 
   // Acá va la lógica de autenticación
-    alert(`Accediendo como: ${email}`);
-  // window.location.href = 'dashboard.html';
+    window.location.href = 'dashboard.html';
 }
 
 document.addEventListener('DOMContentLoaded', () => {

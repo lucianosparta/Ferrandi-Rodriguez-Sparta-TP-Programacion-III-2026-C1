@@ -1,12 +1,14 @@
 require("dotenv").config();  //leer .env
 
 const express = require("express");
-const conexion = require("./sequelize")
+const cors = require("cors");
+const conexion = require("./sequelize");
 
 // Incializacion
 const app = express();
 
 // Config
+app.use(cors());
 app.use(express.json());
 
 const productosRoutes = require("./productos/productos.routes");

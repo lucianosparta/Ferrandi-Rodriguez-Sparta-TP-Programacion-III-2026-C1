@@ -16,7 +16,6 @@ function enter() {
     }
 
     localStorage.setItem('nombreUsuario', nombre);
-    alert(`¡Bienvenido, ${nombre}! 🎮`);
     window.location.href = '../productos/productos.html';
 };
  
