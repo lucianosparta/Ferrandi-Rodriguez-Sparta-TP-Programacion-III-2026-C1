@@ -113,30 +113,6 @@ eliminarButtons.forEach(button => {
 
 });
 
-
-  // Cambio modo claro y modo oscuro
-  themeToggle.addEventListener("click", () => {
-
-    const html = document.documentElement;
-  
-    const currentTheme = html.getAttribute("data-bs-theme");
-  
-    if (currentTheme === "dark") {
-  
-      html.setAttribute("data-bs-theme", "light");
-  
-      themeToggle.textContent = "🌙";
-  
-    } else {
-  
-      html.setAttribute("data-bs-theme", "dark");
-  
-      themeToggle.textContent = "☀️";
-  
-    }
-  
-  });
-
 // Inicializar
 
 actualizarTotales();
