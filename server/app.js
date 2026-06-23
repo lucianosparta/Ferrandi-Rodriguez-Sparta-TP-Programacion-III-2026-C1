@@ -13,12 +13,14 @@ app.use(express.json());
 
 const productosRoutes = require("./productos/productos.routes");
 const usuariosRoutes = require("./usuarios/usuarios.routes")
+const detalleVentaRoutes = require("./detalle-venta/detalle-venta.routes")
 
 require("./relaciones");
 
 // Rutas
 app.use("/productos", productosRoutes);
 app.use("/usuarios", usuariosRoutes);
+app.use("/detalle-venta", detalleVentaRoutes);
 
 // Definicion de puertos 
 const port = process.env.PORT || 3000;
