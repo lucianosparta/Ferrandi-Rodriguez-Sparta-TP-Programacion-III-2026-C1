@@ -6,16 +6,22 @@ const {
   eliminarDetalleVenta,
 } = require("./detalle-venta.controller");
 
+const {
+  validarId,
+  validarDetalleVenta,
+  validarForeignKeys,
+} = require("./detalle-venta.middlewares");
+
 const detalleVentaRouter = require("express").Router();
 
 detalleVentaRouter.get("/", buscarDetalleVenta);
 
-detalleVentaRouter.get("/:id", buscarPorIdDetalleVenta);
+detalleVentaRouter.get("/:id", validarId, buscarPorIdDetalleVenta);
 
-detalleVentaRouter.post("/", crearDetalleVenta);
+detalleVentaRouter.post("/", validarDetalleVenta, validarForeignKeys, crearDetalleVenta);
 
-detalleVentaRouter.put("/", modificarDetalleVenta);
+detalleVentaRouter.put("/", validarId, validarDetalleVenta, modificarDetalleVenta);
 
-detalleVentaRouter.delete("/", eliminarDetalleVenta);
+detalleVentaRouter.delete("/", validarId, eliminarDetalleVenta);
 
 module.exports = detalleVentaRouter;

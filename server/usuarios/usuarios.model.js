@@ -8,15 +8,6 @@ const UserModel = conexion.define(
     autoIncrement: true,
     primaryKey: true,
   },
-  nombre: {
-    type: DataTypes.STRING,
-  },
-  apellido: {
-    type: DataTypes.STRING,
-  },
-  usuario: {
-    type: DataTypes.STRING
-  },
   email: {
     type: DataTypes.STRING,
   },

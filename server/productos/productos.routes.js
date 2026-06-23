@@ -5,28 +5,27 @@ const {
   crearProducto,
   modificarProducto,
   desactivarProducto,
-  activarProducto
+  activarProducto,
 } = require("./productos.controller");
+
+const { validarId, validarProducto } = require("./productos.middlewares");
 
 // defino el router
 const productoRouter = require("express").Router();
-
-// const express = require("express");
-// const router = express.Router();
 
 // cliente
 productoRouter.get("/", buscarProductoActivos);
 // Solo para Admin
 productoRouter.get("/admin", buscarTodosLosProductos);
 
-productoRouter.get("/:id", buscarProductoPorId);
+productoRouter.get("/:id", validarId, buscarProductoPorId);
 
-productoRouter.post("/", crearProducto);
+productoRouter.post("/", validarProducto, crearProducto);
 
-productoRouter.put("/:id", modificarProducto);
+productoRouter.put("/:id", validarId, validarProducto, modificarProducto);
 
-productoRouter.patch("/:id/desactivar", desactivarProducto);
+productoRouter.patch("/:id/desactivar", validarId, desactivarProducto);
 
-productoRouter.patch("/:id/activar", activarProducto);
+productoRouter.patch("/:id/activar", validarId, activarProducto);
 
 module.exports = productoRouter;
