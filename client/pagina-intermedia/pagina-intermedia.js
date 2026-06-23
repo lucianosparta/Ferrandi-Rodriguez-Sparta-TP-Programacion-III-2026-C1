@@ -28,6 +28,8 @@ const confirmarCompra = document.getElementById("confirmarCompra");
 
 const themeToggle = document.getElementById("theme-toggle");
 
+const CLAVE_USUARIO = "nombreUsuario";
+
 function mostrarError(input, mensaje) {
 
   let helper =
@@ -98,6 +100,8 @@ metodoPago.addEventListener("change", () => {
 });
 
 // NOMBRE
+
+nombre.value = localStorage.getItem(CLAVE_USUARIO);
 
 nombre.addEventListener("input", () => {
 
@@ -281,27 +285,5 @@ confirmarCompra.addEventListener("click", () => {
 
   window.location.href =
     "../ticket/ticket.html";
-
-});
-
-themeToggle.addEventListener("click", () => {
-
-  const html = document.documentElement;
-
-  const currentTheme = html.getAttribute("data-bs-theme");
-
-  if (currentTheme === "dark") {
-
-    html.setAttribute("data-bs-theme", "light");
-
-    themeToggle.textContent = "🌙";
-
-  } else {
-
-    html.setAttribute("data-bs-theme", "dark");
-
-    themeToggle.textContent = "☀️";
-
-  }
 
 });
