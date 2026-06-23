@@ -7,16 +7,6 @@
     flex: 1;
 }
 
-.bg-gradiente { 
-    background-color: #0f0f0f; 
-    background-image: linear-gradient(135deg, #1a0933 0%, #0f0f0f 50%, #12062b 100%); 
-}
-
-.bg-gradiente-light {
-    background-color: #f0f0f0e9;
-    background-image: linear-gradient(135deg, #c5a1bc 0%, #f0f0f0 50%, #717572 100%);
-}
-
 .ls { letter-spacing: 0.1em; }
 
 .fs { font-size: 0.75rem; }

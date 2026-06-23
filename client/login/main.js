@@ -1,9 +1,10 @@
-function login() {
     const emailInput = document.getElementById('adminEmail');
     const passInput  = document.getElementById('adminPass');
     const emailError = document.getElementById('emailError');
     const passError  = document.getElementById('passError');
 
+
+function login() {
     const email = emailInput.value.trim();
     const pass  = passInput.value.trim();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -36,8 +37,15 @@ function login() {
     if (!valid) return;
 
   // Acá va la lógica de autenticación
-    window.location.href = 'dashboard.html';
+    window.location.href = '../dashboard/index.html';
 }
+   
+document.getElementById("acceso").addEventListener("click", () => {
+    emailInput.value = "admin.email@frs-gaming.com";
+    passInput.value = "123456root";
+})
+    
+
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('adminPass').addEventListener('keydown', (e) => {

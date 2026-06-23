@@ -3,7 +3,6 @@ const TEMA_CLARO = "light";
 const TEMA_OSCURO = "dark";
 
 const ELEMENTOS_TEMA = [
-  { id: "main-bienvenida", light: "bg-gradiente-light", dark: "bg-gradiente" },
   { id: "card", light: "welcome-card-light", dark: "welcome-card" },
   { id: "h1-title", light: "text-black", dark: "text-white" },
 ];
