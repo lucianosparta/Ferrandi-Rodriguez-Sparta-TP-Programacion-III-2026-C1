@@ -33,25 +33,12 @@
           />
           FRS Gaming
         </a>
-
-        <ul class="navbar-nav mx-auto flex-row gap-4 mb-0">
-          <li class="nav-item">
-            <a class="nav-link active fw-bold border-bottom border-2 border-primary pb-1" href="#">CONSOLAS</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-secondary fw-bold pb-1" href="#">VIDEOJUEGOS</a>
-          </li>
-        </ul>
-
         <div class="d-flex gap-2">
-          <button type="button" class="btn btn-outline-secondary btn-sm" title="Inicio">
-            <a class="nav-link" href="../bienvenida/index.html">Inicio</a>
+          <button type="button" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2" onclick="cambiarTema()">
+            <span class="material-symbols-outlined d-flex">invert_colors</span>
           </button>
           <button type="button" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2">
             <a class="nav-link" href="../carrito/carrito.html">Carrito <span class="badge bg-secondary">0</span></a>
-          </button>
-          <button type="button" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2" onclick="cambiarTema()">
-            <span class="material-symbols-outlined d-flex">invert_colors</span>
           </button>
         </div>
       </div>
@@ -66,44 +53,26 @@
         <p class="text-muted">Seleccioná una categoría y agrega productos al carrito</p>
       </section>
 
+      <!-- PESTAÑAS DE CATEGORÍAS -->
+      <ul id="tablas-categoria" class="nav nav-tabs mb-4">
+        <li class="nav-item">
+          <a class="nav-link active" data-categoria="consolas" href="#">CONSOLAS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-categoria="videojuegos" href="#">VIDEOJUEGOS</a>
+        </li>
+      </ul>
+
       <!-- EXPOSICIÓN DE PRODUCTOS -->
       <div id="contenedor-productos" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-5">
         <!-- ACÁ VAN TODOS LOS PRODUCTOS DISPONIBLES -->
-         <!-- TARJETA EJEMPLO -->
-        <div class="col">
-          <div class="card h-100 shadow-sm">
-            <div class="bg-body-secondary d-flex align-items-center justify-content-center py-4">
-              <img src="../images/logo.png" class="card-img-top w-50" alt="Consola Retro" />
-            </div>
-            <div class="card-body d-flex flex-column">
-              <p class="text-uppercase text-muted small mb-1 fw-semibold">Consola</p>
-              <h5 class="card-title fw-bold">Producto 1</h5>
-              <p class="card-text text-secondary small flex-grow-1">
-                Acá va una breve descripción de cada producto.
-              </p>
-              <h4 class="fw-bold my-3">$0</h4>
-              <div class="d-flex align-items-center gap-2 mt-auto">
-                <div class="d-flex align-items-center justify-content-between border rounded py-1 px-2 flex-fill w-50 qty-selector">
-                  <button class="btn btn-sm p-0 border-0 fw-bold btn-minus">-</button>
-                  <span class="fw-bold value">0</span>
-                  <button class="btn btn-sm p-0 border-0 fw-bold btn-plus">+</button>
-                </div>
-                <button class="btn btn-primary btn-sm fw-bold flex-fill w-50 btn-add">AÑADIR</button>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <!-- PAGINACIÓN -->
       <nav aria-label="Navegación de páginas" class="d-flex justify-content-center mb-5">
-        <ul class="pagination mb-0 justify-content-center">
-          <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
-          <li class="page-item active"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
-        </ul>
+        <span id="texto-pagina" class="text-muted small container"></span>
+        <button id="btn-anterior" class="btn btn-outline-secondary btn-sm">Anterior</button>
+        <button id="btn-siguiente" class="btn btn-outline-secondary btn-sm">Siguiente</button>
       </nav>
 
     </main>
