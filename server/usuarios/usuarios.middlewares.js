@@ -19,15 +19,24 @@ const validarId = (req, res, next) => {
 
 const validarUsuario = (req, res, next) => {
   const Usuario = z.object({
+    nombre: z
+      .string()
+      .min(1, "El nombre es obligatorio"),
+    apellido: z
+      .string()
+      .min(1, "El apellido es obligatorio"),
+    usuario: z
+      .string()
+      .min(5, "El usaurio debe tener al menos 5 caracteres"),
     email: z.string().email("El email no es válido"),
     password: z
       .string()
       .min(6, "La contraseña debe tener al menos 6 caracteres"),
   });
 
-  const { email, password } = req.body;
+  const { nombre, apellido, usuario, email, password } = req.body;
 
-  const resultado = Usuario.safeParse({ email, password });
+  const resultado = Usuario.safeParse({ nombre, apellido, usuario, email, password });
 
   if (!resultado.success) {
     return res.status(400).send({ errores: resultado.error.issues });

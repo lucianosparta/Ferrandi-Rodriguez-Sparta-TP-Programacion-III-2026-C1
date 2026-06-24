@@ -1,5 +1,5 @@
 const Usuario = require("./usuarios.model");
-
+const bcrypt = require("bcrypt");
 
 const buscarUsuariosActivosDB = async () => {
     return await Usuario.findAll({
@@ -39,7 +39,23 @@ const activarUsuarioDB = async (id) => {
       { activo: true },
       { where: { id } }
     );
-  };
+};
+
+const loginUsuarioDB = async (email, password) => {
+    const usuarioLogin = await Usuario.findOne({ where: { email } });
+
+    if (!usuarioLogin) {
+      return null;
+    }
+
+    const passwordValida = await bcrypt.compare(password, usuarioLogin.password);
+
+    if (!passwordValida) {
+        return null;
+    }
+
+    return usuarioLogin;
+};
 
 module.exports = {
     buscarUsuariosActivosDB,
@@ -48,5 +64,6 @@ module.exports = {
     crearUsuarioDB,
     modificarUsuarioDB,
     desactivarUsuarioDB,
-    activarUsuarioDB
+    activarUsuarioDB,
+    loginUsuarioDB,
 };

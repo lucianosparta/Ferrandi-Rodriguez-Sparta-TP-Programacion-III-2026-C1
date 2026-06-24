@@ -6,12 +6,15 @@ const {
   modificarUsuario,
   desactivarUsuario,
   activarUsuario,
+  loginUsuario,
 } = require("./usuarios.controller");
 
 const { validarId, validarUsuario } = require("./usuarios.middlewares");
 
 const usuarioRouter = require("express").Router();
 
+// Login de usuarios
+usuarioRouter.post("/login", loginUsuario);
 // Busqueda de usuarios activos
 usuarioRouter.get("/", buscarUsuariosActivos);
 // Busqueda de usuarios activos y no activos

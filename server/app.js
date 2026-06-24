@@ -14,6 +14,7 @@ app.use(express.json());
 const productosRoutes = require("./productos/productos.routes");
 const usuariosRoutes = require("./usuarios/usuarios.routes")
 const detalleVentaRoutes = require("./detalle-venta/detalle-venta.routes")
+const ventaRoutes = require("./ventas/ventas.routes");
 
 require("./relaciones");
 
@@ -21,6 +22,7 @@ require("./relaciones");
 app.use("/productos", productosRoutes);
 app.use("/usuarios", usuariosRoutes);
 app.use("/detalle-venta", detalleVentaRoutes);
+app.use("/ventas", ventaRoutes);
 
 // Definicion de puertos 
 const port = process.env.PORT || 3000;

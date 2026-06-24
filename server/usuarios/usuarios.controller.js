@@ -5,7 +5,8 @@ const {
     crearUsuarioDB,
     modificarUsuarioDB,
     desactivarUsuarioDB,
-    activarUsuarioDB
+    activarUsuarioDB,
+    loginUsuarioDB,
   } = require("./usuarios.service");
   
     // GET /usuarios
@@ -70,6 +71,16 @@ const {
         res.send(activado);
     };
 
+    const loginUsuario = async (req, res) => {
+        const { email, password } = req.body;
+
+        const usuarioLogin = await loginUsuarioDB(email, password);
+
+        const { password: _, ...usuarioSinPassword} = usuarioLogin.dataValues;
+
+        res.send(usuarioSinPassword);
+    };
+
   module.exports = {
     buscarUsuariosActivos,
     buscarTodosLosUsuarios,
@@ -77,6 +88,7 @@ const {
     crearUsuario,
     modificarUsuario,
     desactivarUsuario,
-    activarUsuario
+    activarUsuario,
+    loginUsuario,
   };
   
