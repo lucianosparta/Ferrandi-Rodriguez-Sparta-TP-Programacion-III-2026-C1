@@ -8,7 +8,6 @@
   <script src="../util/theme.js"></script>
   <title>FRS Gaming - Carrito</title>
 
-  <!-- Bootstrap -->
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet"
@@ -18,11 +17,8 @@
 </head>
 
 <body class="bg-body">
-
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
+  <nav class="navbar bg-body-tertiary shadow-sm">
     <div class="container-fluid">
-
       <a class="navbar-brand d-flex align-items-center gap-2" href="../productos/productos.html">
         <img
           src="../images/icono.png"
@@ -33,196 +29,54 @@
         FRS Gaming
       </a>
 
-      <button type="button" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2" onclick="cambiarTema()">
-            <span class="material-symbols-outlined d-flex">invert_colors</span>
-          </button>
+      <button type="button" class="btn btn-purple btn-sm" onclick="cambiarTema()">
+        <span class="material-symbols-outlined d-flex">invert_colors</span>
+      </button>
     </div>
   </nav>
 
-  <!-- CONTENIDO -->
   <main class="container my-5 flex-grow-1">
-
-    <h1 class="fw-bold mb-4">
-      Carrito de compras
-    </h1>
+    <h1 class="fw-bold mb-4">Carrito de compras</h1>
   
     <div id="contenedor-tabla" class="table-responsive bg-body-tertiary rounded-4 shadow-sm p-4">
-  
       <table class="table align-middle">
-  
         <thead>
-  
           <tr>
-  
             <th>Producto</th>
-  
             <th>Precio</th>
-  
             <th>Cantidad</th>
-  
-            <th>Sub total</th>
-  
+            <th>Subtotal</th>
             <th></th>
-  
           </tr>
-  
         </thead>
-  
-        <tbody>
-  
-          <!-- PRODUCTO 1 -->
-          <tr class="producto">
-  
-            <td>
-              Nemesis Lockdown
-            </td>
-  
-            <td class="precio">
-              57.99
-            </td>
-  
-            <td>
-  
-              <div class="d-flex align-items-center gap-2">
-  
-                <button class="btn btn-outline-secondary minus">
-                  -
-                </button>
-  
-                <input
-                  type="text"
-                  class="form-control text-center quantity"
-                  value="1"
-                  readonly
-                  style="width: 60px;"
-                >
-  
-                <button class="btn btn-outline-secondary plus">
-                  +
-                </button>
-  
-              </div>
-  
-            </td>
-  
-            <td class="subtotal fw-bold">
-              $57.99
-            </td>
-  
-            <td>
-  
-              <button class="btn btn-danger eliminar">
-                🗑
-              </button>
-  
-            </td>
-  
-          </tr>
-  
-          <!-- PRODUCTO 2 -->
-          <tr class="producto">
-  
-            <td>
-              Nemesis Retaliation
-            </td>
-  
-            <td class="precio">
-              189.95
-            </td>
-  
-            <td>
-  
-              <div class="d-flex align-items-center gap-2">
-  
-                <button class="btn btn-outline-secondary minus">
-                  -
-                </button>
-  
-                <input
-                  type="text"
-                  class="form-control text-center quantity"
-                  value="1"
-                  readonly
-                  style="width: 60px;"
-                >
-  
-                <button class="btn btn-outline-secondary plus">
-                  +
-                </button>
-  
-              </div>
-  
-            </td>
-  
-            <td class="subtotal fw-bold">
-              $189.95
-            </td>
-  
-            <td>
-  
-              <button class="btn btn-danger eliminar">
-                🗑
-              </button>
-  
-            </td>
-  
-          </tr>
-  
-        </tbody>
-  
+        <tbody id="tabla-carrito"></tbody>
       </table>
     </div>
 
-      <p
-        id="mensaje-vacio"
-        class="text-center text-dark fw-bold fs-5 d-none"
-      >
-        No hay productos en el carrito
-      </p>
+    <p id="mensaje-vacio" class="text-center fw-bold fs-5 d-none">
+      No hay productos en el carrito
+    </p>
   
-      <!-- FOOTER CARRITO -->
-      <div class="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-3">
+    <div class="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-3">
+      <a href="../productos/productos.html" class="btn btn-secondary fw-bold">
+        Volver al inicio
+      </a>
   
-        <!-- IZQUIERDA -->
-        <a
-          href="../productos/productos.html"
-          class="btn btn-warning fw-bold"
-        >
-          ← Volver al inicio
-        </a>
+      <div class="d-flex align-items-center gap-4">
+        <h4 class="fw-bold mb-0">
+          Total:
+          <span id="total">$0.00</span>
+        </h4>
   
-        <!-- DERECHA -->
-        <div class="d-flex align-items-center gap-4">
-  
-          <h4 class="fw-bold mb-0">
-            Total:
-            <span id="total">
-              $247.94
-            </span>
-          </h4>
-  
-          <form action="../ticket/ticket.html">
-  
-            <button
-              id="btn-pago"
-              class="btn btn-primary fw-bold px-4"
-            >
-  
-              Proceder al pago
-  
-            </button>
-  
-          </form>
-  
-        </div>
-  
+        <form action="../ticket/ticket.html">
+          <button id="btn-pago" class="btn btn-purple fw-bold px-4">
+            Proceder al pago
+          </button>
+        </form>
       </div>
-  
     </div>
-  
   </main>
 
-  <!-- FOOTER -->
   <footer class="bg-body-tertiary border-top py-4 text-center">
     <div class="container">
       <p class="text-muted small mb-0">
@@ -231,8 +85,6 @@
     </div>
   </footer>
 
-  <!-- JS -->
   <script src="carrito.js"></script>
-
 </body>
 </html>
