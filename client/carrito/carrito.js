@@ -6,22 +6,6 @@ const mensajeVacio = document.getElementById("mensaje-vacio");
 const contenedorTabla = document.getElementById("contenedor-tabla");
 const totalElemento = document.getElementById("total");
 
-//en consola y ejecutarlo
-localStorage.setItem("carrito", JSON.stringify([
-  {
-    id: 1,
-    nombre: "Nemesis Lockdown",
-    precio: 57.99,
-    cantidad: 1
-  },
-  {
-    id: 2,
-    nombre: "Nemesis Retaliation",
-    precio: 189.95,
-    cantidad: 1
-  }
-]));
-
 function obtenerCarrito() {
   const carritoGuardado = localStorage.getItem(CLAVE_CARRITO);
   return carritoGuardado ? JSON.parse(carritoGuardado) : [];
@@ -39,8 +23,6 @@ function renderizarCarrito() {
     mensajeVacio.classList.remove("d-none");
     contenedorTabla.classList.add("d-none");
     btnPago.disabled = true;
-    btnPago.classList.remove("btn-purple");
-    btnPago.classList.add("btn-secondary");
     totalElemento.textContent = "$0.00";
     return;
   }
@@ -48,8 +30,6 @@ function renderizarCarrito() {
   mensajeVacio.classList.add("d-none");
   contenedorTabla.classList.remove("d-none");
   btnPago.disabled = false;
-  btnPago.classList.remove("btn-secondary");
-  btnPago.classList.add("btn-purple");
 
   let total = 0;
 
@@ -65,19 +45,13 @@ function renderizarCarrito() {
       <td>
         <div class="d-flex align-items-center gap-2">
           <button class="btn btn-outline-secondary minus" data-id="${producto.id}">-</button>
-          <input
-            type="text"
-            class="form-control text-center quantity"
-            value="${producto.cantidad}"
-            readonly
-            style="width: 60px;"
-          >
+          <input class="form-control text-center" value="${producto.cantidad}" readonly style="width:60px;">
           <button class="btn btn-outline-secondary plus" data-id="${producto.id}">+</button>
         </div>
       </td>
       <td class="fw-bold">$${subtotal.toFixed(2)}</td>
       <td>
-        <button class="btn-icon-delete eliminar" data-id="${producto.id}">🗑</button>
+        <button class="btn  eliminar" data-id="${producto.id}">🗑</button>
       </td>
     `;
 

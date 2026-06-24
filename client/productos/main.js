@@ -34,12 +34,14 @@ function renderizarProductos(productos) {
               <h4 class="fw-bold my-3 text-dark">$${producto.precio}</h4>
               <p class="small text-muted mb-2">Stock: ${producto.stock}</p>
               <div class="mt-auto">
-                <button class="btn btn-primary btn-sm w-100 fw-bold">AÑADIR</button>
+                <button class="btn btn-primary btn-sm w-100 fw-bold btn-add">AÑADIR</button>
               </div>
             </div>
           </div>
         `;
-
+        tarjeta.querySelector(".btn-add").addEventListener("click", () => {
+            agregarAlCarrito(producto);
+        });
         contenedor.appendChild(tarjeta);
     });
 }
@@ -63,6 +65,37 @@ function actualizarVista() {
     renderizarPaginacion(filtrados.length);
 }
 
+function agregarAlCarrito(producto) {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    const existente = carrito.find(p => Number(p.id) === Number(producto.id));
+
+    if (existente) {
+        existente.cantidad += 1;
+    } else {
+        carrito.push({
+            id: producto.id,
+            nombre: producto.nombre,
+            precio: producto.precio,
+            cantidad: 1
+        });
+    }
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    actualizarContadorCarrito();
+}
+
+function actualizarContadorCarrito() {
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    const total = carrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+
+    const badge = document.getElementById("cart-count");
+
+    if (badge) {
+        badge.textContent = total;
+    }
+}
 const tablas = document.querySelectorAll("#tablas-categoria .nav-link");
 
 tablas.forEach((tab) => {
@@ -96,8 +129,10 @@ async function obtenerProductos() {
 }
 
 document.getElementById("btn-anterior").addEventListener("click", () => {
-    paginaActual--;
-    actualizarVista();
+    if (paginaActual > 1) {
+        paginaActual--;
+        actualizarVista();
+    }
 });
 
 document.getElementById("btn-siguiente").addEventListener("click", () => {
@@ -105,4 +140,7 @@ document.getElementById("btn-siguiente").addEventListener("click", () => {
     actualizarVista();
 });
 
-obtenerProductos();
+document.addEventListener("DOMContentLoaded", () => {
+    actualizarContadorCarrito();
+    obtenerProductos();
+});
