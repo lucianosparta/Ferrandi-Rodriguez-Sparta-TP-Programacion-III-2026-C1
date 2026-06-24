@@ -3,6 +3,7 @@ require("dotenv").config();  //leer .env
 const express = require("express");
 const cors = require("cors");
 const conexion = require("./sequelize");
+const path = require("path");
 
 // Incializacion
 const app = express();
@@ -10,11 +11,21 @@ const app = express();
 // Config
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
+// Configurar EJS como motor de vistas
+app.set("view engine", "ejs");
+app.set("views",  path.join(__dirname, "views"));
+
+// Servir archivos estáticos
+app.use(express.static(path.join(__dirname, "public")));
 
 const productosRoutes = require("./productos/productos.routes");
 const usuariosRoutes = require("./usuarios/usuarios.routes")
 const detalleVentaRoutes = require("./detalle-venta/detalle-venta.routes")
 const ventaRoutes = require("./ventas/ventas.routes");
+const adminRoutes = require("./admin/admin.routes");
 
 require("./relaciones");
 
@@ -23,6 +34,8 @@ app.use("/productos", productosRoutes);
 app.use("/usuarios", usuariosRoutes);
 app.use("/detalle-venta", detalleVentaRoutes);
 app.use("/ventas", ventaRoutes);
+//Administrador (EJS)
+app.use("/admin", adminRoutes);
 
 // Definicion de puertos 
 const port = process.env.PORT || 3000;
