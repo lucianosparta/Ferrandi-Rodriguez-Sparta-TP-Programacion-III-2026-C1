@@ -10,9 +10,11 @@ const SalesModel = conexion.define(
   },
   nombre_cliente: {
     type: DataTypes.STRING,
+    allowNull: false,
   },
   total: {
     type: DataTypes.FLOAT,
+    allowNull: false,
   }},
   {
     tableName: "ventas"
