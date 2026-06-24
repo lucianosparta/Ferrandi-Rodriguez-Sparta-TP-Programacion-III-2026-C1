@@ -1,8 +1,35 @@
 body {
-    background-color: #f3f3f3;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-    min-height: 100vh;
-  }
+.btn-purple {
+  background-color: #6d28d9;
+  border: none;
+  color: #fff;
+}
+
+.btn-purple:hover {
+  background-color: #6d28d9;
+  color: #fff;
+}
+
+.btn-purple:disabled {
+  background-color: #6c757d;
+  border: none;
+  color: #fff;
+}
+
+.btn-icon-delete {
+  background-color: transparent;
+  border: none;
+  color: #6c757d;
+  font-size: 1.2rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.btn-icon-delete:hover {
+  background-color: transparent;
+  color: #495057;
+}
