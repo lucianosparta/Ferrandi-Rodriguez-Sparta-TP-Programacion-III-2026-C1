@@ -36,7 +36,7 @@ const validarDetalleVenta = (req, res, next) => {
     precio_unitario: z.coerce
       .number()
       .positive("El precio unitario debe ser mayor a 0"),
-    subtotal: z.coerce.number.positive("El subtotal debe ser mayor a 0"),
+    subtotal: z.coerce.number().positive("El subtotal debe ser mayor a 0"),
   });
 
   const { venta_id, producto_id, cantidad, precio_unitario, subtotal } =
