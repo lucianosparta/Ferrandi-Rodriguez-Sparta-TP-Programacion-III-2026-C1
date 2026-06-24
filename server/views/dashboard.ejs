@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="/css/dashboard-style.css">
+    <script src="/js/theme.js"></script>
+    <title>Dashboard - FRS Gaming</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="/admin/dashboard">
+                <img src="../images/icono.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top"/>
+                <strong>FRS Gaming</strong>
+            </a>
+
+            <div class="d-flex align-items-center gap-2">
+                <span class="nav-link small mb-0" id="adminName"><%= admin.nombre %></span>
+                <button type="button" class="btn btn-purple btn-sm" onclick="cambiarTema()">
+                    <span class="material-symbols-outlined d-flex">invert_colors</span>
+                </button>
+                <button onclick="logout()" class="btn btn-purple btn-sm">Salir</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-dashboard" class="flex-grow-1">
+        <div class="container py-4">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <p class="text-purple mb-1 small fw-semibold text-uppercase ls">FRS Gaming</p>
+                    <h1 id="h1-title" class="fw-semibold mb-1">Panel de Administrador</h1>
+                </div>
+            </div>
+
+            <div class="d-flex gap-2 mt-3 mb-3 botones-seccion">
+                <button class="btn btn-purple" id="btnProductos" onclick="mostrarSeccion('productos')">Productos</button>
+                <button class="btn btn-outline-secondary" id="btnVentas" onclick="mostrarSeccion('ventas')">Ventas</button>
+            </div>
+
+            <div class="tab-content shadow-sm">
+                <!--PRODUCTOS-->
+                <section id="productos">
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <a href="/admin/producto/nuevo" class="btn btn-purple fw-semibold">
+                                Agregar Producto
+                            </a>
+                        </div>
+                    </div>
+
+                    <!--Consolas -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <h4>Consolas</h4>
+                            <div class="table-responsive shadow-sm">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-id">ID</th>
+                                            <th class="col-nombre">Nombre</th>
+                                            <th class="col-descripcion">Descripción</th>
+                                            <th class="col-precio">Precio</th>
+                                            <th class="col-stock">Stock</th>
+                                            <th class="col-estado">Estado</th>
+                                            <th class="col-acciones">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% const consolas = productos.filter(p => p.categoria === 'consolas'); %>
+                                        <% if (consolas.length === 0) { %>
+                                            <tr>
+                                                <td colspan="7" class="text-center">Sin productos en esta categoria</td>
+                                            </tr>
+                                        <% } else { %>
+                                            <% consolas.forEach(producto => { %>
+                                                <tr>
+                                                    <td><%= producto.id %></td>
+                                                    <td><%= producto.nombre %></td>
+                                                    <td><%= producto.descripcion.length > 30 ? producto.descripcion.substring(0, 30) + '...' : producto.descripcion %></td>
+                                                    <td>$<%= producto.precio %></td>
+                                                    <td><%= producto.stock %></td>
+                                                    <td>
+                                                        <% if (producto.activo) { %>
+                                                            <span class="badge badge-active">Activo</span>
+                                                        <% } else { %>
+                                                            <span class="badge badge-inactive">Inactivo</span>
+                                                        <% } %>
+                                                    </td>
+                                                    <td>
+                                                        <a href="/admin/producto/<%= producto.id %>/editar" 
+                                                            class="btn btn-sm btn-purple-light">Editar</a>
+                                                        <% if (producto.activo) { %>
+                                                            <form method="POST" action="/admin/producto/<%= producto.id %>/desactivar" style="display: inline;">
+                                                                <button type="submit" 
+                                                                class="btn btn-sm btn-purple" 
+                                                                onclick="return confirm('¿Está seguro que desea desactivar este producto?')">Desactivar</button>
+                                                            </form>
+                                                        <% } else { %>
+                                                            <form method="POST" action="/admin/producto/<%= producto.id %>/activar" style="display: inline;">
+                                                                <button type="submit" 
+                                                                class="btn btn-sm btn-purple" 
+                                                                onclick="return confirm('¿Está seguro que desea activar este producto?')">Activar</button>
+                                                            </form>
+                                                        <% } %>
+                                                    </td>
+                                                </tr>
+                                            <% }); %>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Videojuegos -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <h4>Videojuegos</h4>
+                            <div class="table-responsive shadow-sm">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-id">ID</th>
+                                            <th class="col-nombre">Nombre</th>
+                                            <th class="col-descripcion">Descripción</th>
+                                            <th class="col-precio">Precio</th>
+                                            <th class="col-stock">Stock</th>
+                                            <th class="col-estado">Estado</th>
+                                            <th class="col-acciones">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% const videojuegos = productos.filter(p => p.categoria === 'videojuegos'); %>
+                                        <% if (videojuegos.length === 0) { %>
+                                            <tr>
+                                                <td colspan="7" class="text-center">Sin productos en esta categoria</td>
+                                            </tr>
+                                        <% } else { %>
+                                            <% videojuegos.forEach(producto => { %>
+                                                <tr>
+                                                    <td><%= producto.id %></td>
+                                                    <td><%= producto.nombre %></td>
+                                                    <td><%= producto.descripcion.length > 30 ? producto.descripcion.substring(0, 30) + '...' : producto.descripcion %></td>
+                                                    <td>$<%= producto.precio %></td>
+                                                    <td><%= producto.stock %></td>
+                                                    <td>
+                                                        <% if (producto.activo) { %>
+                                                            <span class="badge badge-active">Activo</span>
+                                                        <% } else { %>
+                                                            <span class="badge badge-inactive">Inactivo</span>
+                                                        <% } %>
+                                                    </td>
+                                                    <td>
+                                                        <a href="/admin/producto/<%= producto.id %>/editar" 
+                                                            class="btn btn-sm btn-purple-light">Editar</a>
+                                                        <% if (producto.activo) { %>
+                                                            <form method="POST" action="/admin/producto/<%= producto.id %>/desactivar" style="display: inline;">
+                                                                <button type="submit" 
+                                                                class="btn btn-sm btn-purple" 
+                                                                onclick="return confirm('¿Está seguro que desea desactivar este producto?')">Desactivar</button>
+                                                            </form>
+                                                        <% } else { %>
+                                                            <form method="POST" action="/admin/producto/<%= producto.id %>/activar" style="display: inline;">
+                                                                <button type="submit" 
+                                                                class="btn btn-sm btn-purple" 
+                                                                onclick="return confirm('¿Está seguro que desea activar este producto?')">Activar</button>
+                                                            </form>
+                                                        <% } %>
+                                                    </td>
+                                                </tr>
+                                            <% }); %>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- VENTAS -->
+                <section id="ventas" style="display: none;">
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <form method="POST" action="/admin/ventas/descargar-excel" style="display: inline;">
+                                <button type="submit" class="btn btn-purple fw-semibold">
+                                    Descargar Ventas en Excel
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <h4>Registro de Ventas</h4>
+                            <div class="table-responsive shadow-sm">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-id">ID</th>
+                                            <th class="col-cliente">Cliente</th>
+                                            <th class="col-total">Total</th>
+                                            <th class="col-fecha">Fecha</th>
+                                            <th class="col-producto">Productos</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% if (ventas.length === 0) { %>
+                                            <tr>
+                                                <td colspan="5" class="text-center">Sin ventas registradas</td>
+                                            </tr>
+                                        <% } else { %>
+                                            <% ventas.forEach(venta => { %>
+                                                <tr>
+                                                    <td><%= venta.id %></td>
+                                                    <td><%= venta.nombre_cliente %></td>
+                                                    <td>$<%= venta.total %></td>
+                                                    <td><%= new Date(venta.createdAt).toLocaleDateString('es-AR') %></td>
+                                                    <td>
+                                                        <% if (venta.productos && venta.productos.length > 0) { %>
+                                                            <%= venta.productos.map(p => p.nombre).join(', ') %>
+                                                        <% } %>
+                                                    </td>
+                                                </tr>
+                                            <% }); %>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-body-tertiary border-top py-4 text-center mt-5">
+        <div>
+            <p class="text-muted small mb-0">
+                Franco Ferrandi - Augusto Rodriguez - Luciano Sparta | Programación III - 2026
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        function mostrarSeccion(seccion) {
+            const productos = document.getElementById("productos");
+            const ventas = document.getElementById("ventas");
+            const btnProductos = document.getElementById("btnProductos");
+            const btnVentas = document.getElementById("btnVentas");
+
+            if (seccion === "productos") {
+                productos.style.display = "block";
+                ventas.style.display = "none";
+                btnProductos.classList.remove("btn-outline-secondary");
+                btnProductos.classList.add("btn-purple");
+                btnVentas.classList.remove("btn-purple");
+                btnVentas.classList.add("btn-outline-secondary");
+            } else {
+                productos.style.display = "none";
+                ventas.style.display = "block";
+                btnVentas.classList.remove("btn-outline-secondary");
+                btnVentas.classList.add("btn-purple");
+                btnProductos.classList.remove("btn-purple");
+                btnProductos.classList.add("btn-outline-secondary");
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('adminUser');
+            window.location.href = '../login/index.html';
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            mostrarSeccion("productos");
+        });
+    </script>
+</body>
+</html>
+
+
+
