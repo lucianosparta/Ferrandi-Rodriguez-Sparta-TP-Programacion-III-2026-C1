@@ -9,13 +9,7 @@ const horaTicket = document.getElementById("hora-ticket");
 
 // FUNCIONES DE LÓGICA Y RENDERIZADO
 function cargarUsuario() {
-    const usuarioGuardado = localStorage.getItem("nombreUsuario"); // Ajustá el nombre si es necesario
-    
-    if (usuarioGuardado) {
-        nombreCliente.textContent = usuarioGuardado;
-    } else {
-        nombreCliente.textContent = "Consumidor Final";
-    }
+    const usuarioGuardado = localStorage.getItem("nombreUsuario");
 }
 
 function congelarFechaYHora() {
@@ -29,11 +23,11 @@ function congelarFechaYHora() {
         localStorage.setItem("fechaCompra", fechaCompra.toISOString());
     }
 
-    const opcionesFecha = { year: "numeric", month: "2-digit", day: "2-digit" };
-    const opcionesHora = { hour: "2-digit", minute: "2-digit" };
+    const formatoFecha = { year: "numeric", month: "2-digit", day: "2-digit" };
+    const formatoHora = { hour: "2-digit", minute: "2-digit" };
 
-    fechaTicket.textContent = fechaCompra.toLocaleDateString("es-AR", opcionesFecha);
-    horaTicket.textContent = fechaCompra.toLocaleTimeString("es-AR", opcionesHora);
+    fechaTicket.textContent = fechaCompra.toLocaleDateString("es-AR", formatoFecha);
+    horaTicket.textContent = fechaCompra.toLocaleTimeString("es-AR", formatoHora);
 }
 
 function renderizarProductosCarrito() {
