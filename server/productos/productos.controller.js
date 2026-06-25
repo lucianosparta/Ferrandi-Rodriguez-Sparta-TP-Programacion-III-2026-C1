@@ -49,8 +49,11 @@ const buscarProductoPorId = async (req, res, next) => {
 // POST /productos
 const crearProducto = async (req, res, next) => {
   try {
-    const { nombre, descripcion, categoria, precio, stock, activo, imagen } =
+    const { nombre, descripcion, categoria, precio, stock, activo } =
       req.body;
+
+    const imagen = req.file ? `uploads/${req.file.filename}` : null;
+
     const producto = {
       nombre,
       descripcion,
