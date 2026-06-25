@@ -129,6 +129,10 @@ const loginUsuario = async (req, res) => {
 
   const usuarioLogin = await loginUsuarioDB(email, password);
 
+  if (!usuarioLogin) {
+      return res.status(401).send({ message: "Credenciales inválidas" });
+  }
+
   const { password: _, ...usuarioSinPassword } = usuarioLogin.dataValues;
 
   res.send(usuarioSinPassword);

@@ -36,39 +36,31 @@ async function login() {
 
     if (!valid) return;
 
-    // try {
-    //     const respuesta = await fetch("http://localhost:3000/usuarios/login", {
-    //         method: "POST",
-    //         headers: { "Content-Type": "application/json"},
-    //         body: JSON.stringify({ email, password: pass}),
-    //     });
+    try {
+        const respuesta = await fetch("http://localhost:3000/usuarios/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify({ email, password: pass}),
+        });
 
-    //     const data = await respuesta.json();
+        const data = await respuesta.json();
 
-    //     localStorage.setItem("adminLogueado", JSON.stringify(data.usuario));
-    //     window.location.href = '../dashboard/index.html';
+        if (!respuesta.ok) {   
+            emailInput.classList.add('error');
+            emailError.textContent = 'El email o la contraseña son inválidos';
+            emailError.classList.remove('d-none');
+        return;
+        }
 
-    // } catch (error) {
-    //         emailInput.classList.add('error');
-    //         passInput.classList.add('error');
-    //         emailError.textContent = 'La contraseña o el email son inválidos.';
-    //         emailError.classList.remove('d-none');
-    //         passError.classList.remove('d-none');
-    // }
-    // ACCESO TEMPORAL - Permitir acceso con cualquier contraseña
-    // Guardar datos de prueba en localStorage
-    const usuarioPrueba = {
-        id: 1,
-        nombre: email.split('@')[0],
-        apellido: 'Admin',
-        email: email
-    };
-    
-    localStorage.setItem('adminUser', JSON.stringify(usuarioPrueba));
-    
-    // Redirigir al dashboard del servidor (EJS)
-    window.location.href = 'http://localhost:3000/admin/dashboard?nombre=' + encodeURIComponent(usuarioPrueba.nombre);
-    
+        window.location.href = `http://localhost:3000/admin/dashboard?adminUser=${encodeURIComponent(data.email)}`;
+
+    } catch (error) {
+        emailInput.classList.add('error');
+        passInput.classList.add('error');
+        emailError.textContent = 'Error al conectar con el servidor.';
+        emailError.classList.remove('d-none');
+        passError.classList.remove('d-none');
+     }
 }
    
 document.getElementById("acceso").addEventListener("click", () => {

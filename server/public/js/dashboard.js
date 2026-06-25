@@ -1,9 +1,26 @@
+const params = new URLSearchParams(window.location.search);
+
+function cargarLocalStorage() {
+    const adminUser = params.get("adminUser");
+
+    if (adminUser) {
+        localStorage.setItem("adminUser", adminUser);
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    const adminLogueado = localStorage.getItem("adminUser");
+
+    if (!adminLogueado) {
+        window.location.href = 'http://127.0.0.1:5500/client/login/index.html';
+    }
+
+}
+
 // Mostrar Toastify si hay mensaje en la URL
 function mostrarMensajeToast() {
-    const params = new URLSearchParams(window.location.search);
     const mensaje = params.get('mensaje');
     const tipo = params.get('tipo');
-
+    
     if (mensaje) {
         const backgroundColor = tipo === 'success' ? '#28a745' : '#dc3545';
         Toastify({
@@ -17,6 +34,8 @@ function mostrarMensajeToast() {
         // Limpiar la URL sin recargar
         window.history.replaceState({}, document.title, window.location.pathname);
     }
+
+
 }
 
 function mostrarSeccion(seccion) {
@@ -44,10 +63,11 @@ function mostrarSeccion(seccion) {
 
 function logout() {
     localStorage.removeItem("adminUser");
-    window.location.href = "/bienvenida/index.html";
+    window.location.href = "http://127.0.0.1:5500/client/login/index.html";
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    cargarLocalStorage();
     mostrarMensajeToast();
     mostrarSeccion("productos");
 });
