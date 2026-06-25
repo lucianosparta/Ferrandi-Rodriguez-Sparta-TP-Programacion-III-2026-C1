@@ -7,13 +7,13 @@ const {
     activarProductoDB,
     obtenerVentasDB
   } = require("./admin.service");
-  
-  // GET /admin/dashboard 
+
+  // GET /admin/dashboard
   const mostrarDashboard = async (req, res) => {
     try {
       const productos = await obtenerProductosDB();
       const ventas = await obtenerVentasDB();
-  
+
       // datos del usuario desde query->se envían desde el cliente
       const adminNombre = req.query.nombre || "Admin";
   
@@ -71,25 +71,20 @@ const {
     try {
       const { nombre, descripcion, categoria, precio, stock } = req.body;
   
-      const nuevoProducto = await crearProductoDB(
+      await crearProductoDB(
         { nombre, descripcion, categoria, precio, stock },
         req.file.filename
       );
-  
-      res.render("producto-form", {
-        producto: null,
-        errors: [],
-        exito: "Producto creado exitosamente"
-      });
-  
-      setTimeout(() => {
-        res.redirect("/admin/dashboard");
-      }, 1500);
+
+      // Redirigir con mensaje de éxito para Toastify
+      res.redirect("/admin/dashboard?mensaje=Producto%20creado%20exitosamente&tipo=success");
+
     } catch (error) {
-      console.error("Error:", error);
+      console.error(error);
+  
       res.render("producto-form", {
-        producto: null,
-        errors: ["Error al crear producto"],
+        producto: req.body,
+        errors: [error.message || "Error al crear producto"],
         exito: null
       });
     }
@@ -106,27 +101,21 @@ const {
         { nombre, descripcion, categoria, precio, stock },
         req.file ? req.file.filename : null
       );
-  
-      res.render("producto-form", {
-        producto: productoDatos,
-        errors: [],
-        exito: "Producto actualizado exitosamente"
-      });
-  
-      setTimeout(() => {
-        res.redirect("/admin/dashboard");
-      }, 1500);
+
+      // Redirigir con mensaje de éxito para Toastify
+      res.redirect("/admin/dashboard?mensaje=Producto%20actualizado%20exitosamente&tipo=success");
+
     } catch (error) {
       console.error("Error:", error);
       const producto = await obtenerProductoPorIdDB(id);
       res.render("producto-form", {
-        producto,
-        errors: ["Error al actualizar producto"],
+        producto: producto || req.body,
+        errors: [error.message || "Error al actualizar producto"],
         exito: null
       });
     }
   };
-  
+
   // POST /admin/producto/:id/desactivar - Desactivar producto
   const desactivarProducto = async (req, res) => {
     try {
@@ -138,7 +127,7 @@ const {
       res.redirect("/admin/dashboard?mensaje=Error al desactivar");
     }
   };
-  
+
   // POST /admin/producto/:id/activar - Activar producto
   const activarProducto = async (req, res) => {
     try {
@@ -150,7 +139,7 @@ const {
       res.redirect("/admin/dashboard?mensaje=Error al activar");
     }
   };
-  
+
   // POST /admin/ventas/descargar-excel - Descargar ventas en Excel
   const descargarExcel = async (req, res) => {
     try {
@@ -187,13 +176,13 @@ const {
       res.redirect("/admin/dashboard?mensaje=Error al descargar");
     }
   };
-  
+
   // GET /admin/logout - Salir
   const logout = (req, res) => {
     res.clearCookie("adminToken");
     res.redirect("/admin/login?mensaje=Sesión cerrada");
   };
-  
+
   module.exports = {
     mostrarDashboard,
     mostrarNuevoProducto,
@@ -204,7 +193,7 @@ const {
     activarProducto,
     descargarExcel
   };
-  
+
   
   
   
