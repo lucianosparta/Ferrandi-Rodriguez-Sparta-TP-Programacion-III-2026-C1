@@ -1,46 +1,29 @@
 const z = require("zod");
 
 const validarId = (req, res, next) => {
-  const ID = z.object({
+  const Id = z.object({
     id: z.coerce
       .number()
       .int()
       .positive("El ID debe ser un número entero positivo"),
   });
 
-  const resultado = ID.safeParse(req.params);
-
-  if (!resultado.success) {
-    return res.status(400).send({ errores: resultado.error.issues });
-  }
+  Id.parse(req.params);
 
   next();
 };
 
 const validarUsuario = (req, res, next) => {
   const Usuario = z.object({
-    nombre: z
-      .string()
-      .min(1, "El nombre es obligatorio"),
-    apellido: z
-      .string()
-      .min(1, "El apellido es obligatorio"),
-    usuario: z
-      .string()
-      .min(5, "El usaurio debe tener al menos 5 caracteres"),
     email: z.string().email("El email no es válido"),
     password: z
       .string()
       .min(6, "La contraseña debe tener al menos 6 caracteres"),
   });
 
-  const { nombre, apellido, usuario, email, password } = req.body;
+  const { email, password } = req.body;
 
-  const resultado = Usuario.safeParse({ nombre, apellido, usuario, email, password });
-
-  if (!resultado.success) {
-    return res.status(400).send({ errores: resultado.error.issues });
-  }
+  Usuario.parse({ email, password });
 
   next();
 };

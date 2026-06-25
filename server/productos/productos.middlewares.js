@@ -1,18 +1,14 @@
 const z = require("zod");
 
 const validarId = (req, res, next) => {
-  const ID = z.object({
+  const Id = z.object({
     id: z.coerce
       .number()
       .int()
       .positive("El ID debe ser un número entero positivo"),
   });
 
-  const resultado = ID.safeParse(req.params);
-
-  if (!resultado.success) {
-    return res.status(400).send({ errores: resultado.error.issues });
-  }
+  Id.parse(req.params);
 
   next();
 };
@@ -36,7 +32,7 @@ const validarProducto = (req, res, next) => {
   const { nombre, descripcion, categoria, precio, stock, imagen } = req.body;
   // const { filename } = req.file;
 
-  const resultado = Producto.safeParse({
+  Producto.parse({
     nombre,
     descripcion,
     categoria,
@@ -45,10 +41,6 @@ const validarProducto = (req, res, next) => {
     // filename,
     imagen,
   });
-
-  if (!resultado.success) {
-    return res.status(400).send({ errores: resultado.error.issues });
-  }
 
   next();
 };

@@ -3,18 +3,14 @@ const ProductModel = require("../productos/productos.model");
 const SalesModel = require("../ventas/ventas.model");
 
 const validarId = (req, res, next) => {
-  const ID = z.object({
+  const Id = z.object({
     id: z.coerce
       .number()
       .int()
       .positive("El ID debe ser un número entero positivo"),
   });
 
-  const resultado = ID.safeParse(req.params);
-
-  if (!resultado.success) {
-    return res.status(400).send({ errores: resultado.error.issues });
-  }
+  Id.parse(req.params);
 
   next();
 };
@@ -42,17 +38,13 @@ const validarDetalleVenta = (req, res, next) => {
   const { venta_id, producto_id, cantidad, precio_unitario, subtotal } =
     req.body;
 
-  const resultado = DetalleVenta.safeParse({
+  DetalleVenta.parse({
     venta_id,
     producto_id,
     cantidad,
     precio_unitario,
     subtotal,
   });
-
-  if (!resultado.success) {
-    return res.status(400).send({ errores: resultado.error.issues });
-  }
 
   next();
 };

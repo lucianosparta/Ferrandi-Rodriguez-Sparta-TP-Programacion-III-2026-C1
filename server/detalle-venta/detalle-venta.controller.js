@@ -6,61 +6,108 @@ const {
   eliminarDetalleVentaDB,
 } = require("./detalle-venta.service");
 
-const buscarDetalleVenta = async (req, res) => {
-  const detalleVenta = await buscarDetalleVentaDB();
+// GET /detalle-ventas
+const buscarDetalleVenta = async (req, res, next) => {
+  try {
+    const detalleVenta = await buscarDetalleVentaDB();
 
-  res.send(detalleVenta);
+    res.send(detalleVenta);
+  } catch (error) {
+    next(error);
+  }
 };
 
-const buscarPorIdDetalleVenta = async (req, res) => {
-  const { id } = req.params;
-  const detalleVenta = await buscarPorIdDetalleVentaDB(id);
+// GET /detalle-ventas/:id
+const buscarPorIdDetalleVenta = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const detalleVenta = await buscarPorIdDetalleVentaDB(id);
 
-  res.send(detalleVenta);
+    if (!detalleVenta) {
+      return res.status(404).send({ error: "Usuario no encontrado" });
+    }
+
+    res.send(detalleVenta);
+  } catch (error) {
+    next(error);
+  }
 };
 
-const crearDetalleVenta = async (req, res) => {
-  const { venta_id, producto_id, cantidad, precio_unitario, subtotal } =
-    req.body;
+// POST /detalle-ventas
+const crearDetalleVenta = async (req, res, next) => {
+  try {
+    const { venta_id, producto_id, cantidad, precio_unitario, subtotal } =
+      req.body;
 
-  const detalleVenta = {
-    venta_id,
-    producto_id,
-    cantidad,
-    precio_unitario,
-    subtotal,
-  };
+    const detalleVenta = {
+      venta_id,
+      producto_id,
+      cantidad,
+      precio_unitario,
+      subtotal,
+    };
 
-  const detalleVentaCreado = await crearDetalleVentaDB(detalleVenta);
+    const detalleVentaCreado = await crearDetalleVentaDB(detalleVenta);
 
-  res.send(detalleVentaCreado);
+    res.send(detalleVentaCreado);
+  } catch (error) {
+    next(error);
+  }
 };
 
-const modificarDetalleVenta = async (req, res) => {
-  const { venta_id, producto_id, cantidad, precio_unitario, subtotal } =
-    req.body;
+// PUT /detalle-ventas/:id
+const modificarDetalleVenta = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { venta_id, producto_id, cantidad, precio_unitario, subtotal } =
+      req.body;
 
-  const { id } = req.params;
+    const detalleVentaExiste = await buscarPorIdDetalleVentaDB(id);
 
-  const detalleVenta = {
-    venta_id,
-    producto_id,
-    cantidad,
-    precio_unitario,
-    subtotal,
-  };
+    if (!detalleVentaExiste) {
+      return res
+        .status(404)
+        .send({ error: "No se puede modificar, el detalle-venta no existe" });
+    }
 
-  const detalleVentaCreado = await modificarDetalleVentaDB(id, detalleVenta);
+    const detalleVenta = {
+      venta_id,
+      producto_id,
+      cantidad,
+      precio_unitario,
+      subtotal,
+    };
 
-  res.send(detalleVentaCreado);
+    const detalleVentaModificado = await modificarDetalleVentaDB(
+      id,
+      detalleVenta,
+    );
+
+    res.send(detalleVentaModificado);
+  } catch (error) {
+    next(error);
+  }
 };
 
-const eliminarDetalleVenta = async (req, res) => {
-  const { id } = req.params;
+// DELETE /detalle-ventas/:id
+const eliminarDetalleVenta = async (req, res, next) => {
+  try {
+    const { id } = req.params;
 
-  const detalleVentaEliminado = await eliminarDetalleVentaDB(id);
+    const detalleVentaExiste = await buscarPorIdDetalleVentaDB(id);
 
-  res.send(detalleVentaEliminado);
+    if (!detalleVentaExiste) {
+      return res
+        .status(404)
+        .send({ error: "No se puede eliminar, el detalle-venta no existe" });
+    }
+
+    const detalleVentaEliminado = await eliminarDetalleVentaDB(id);
+
+    res.send(detalleVentaEliminado);
+  } catch (error) {
+    next(error);
+  }
 };
 
 module.exports = {

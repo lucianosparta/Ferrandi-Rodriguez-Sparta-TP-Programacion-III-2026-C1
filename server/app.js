@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const conexion = require("./sequelize");
 const path = require("path");
+const { ZodError } = require("zod");
 
 // Incializacion
 const app = express();
@@ -40,6 +41,17 @@ app.use("/admin", adminRoutes);
 // Definicion de puertos 
 const port = process.env.PORT || 3000;
 const portDb = process.env.DB_PORT;
+
+// Manejador de errores global
+app.use((error, req, res, next) => {
+
+  if (error instanceof ZodError) {
+    return res.status(400).send({ errores: error.issues }); 
+  }
+
+  console.error(error);
+  res.status(500).send({ error: "Error interno del servidor" });
+});
 
 //Servir la app
 (async () => {
