@@ -5,6 +5,9 @@ const btnPago = document.getElementById("btn-pago");
 const mensajeVacio = document.getElementById("mensaje-vacio");
 const contenedorTabla = document.getElementById("contenedor-tabla");
 const totalElemento = document.getElementById("total");
+const modalElemento = document.getElementById("modalConfirmar");
+const modal = new bootstrap.Modal(modalElemento);
+const confirmarCompra = document.getElementById("confirmarCompra");
 
 function obtenerCarrito() {
   const carritoGuardado = localStorage.getItem(CLAVE_CARRITO);
@@ -51,7 +54,9 @@ function renderizarCarrito() {
       </td>
       <td class="fw-bold">$${subtotal.toFixed(2)}</td>
       <td>
-        <button class="btn  eliminar" data-id="${producto.id}">🗑</button>
+        <button class="btn btn-purple eliminar" data-id="${producto.id}">
+            <span class="material-symbols-outlined eliminar">delete</span>
+        </button>
       </td>
     `;
 
@@ -104,5 +109,14 @@ tablaCarrito.addEventListener("click", (e) => {
     eliminarProducto(id);
   }
 });
+
+btnPago.addEventListener("click", () => {
+  modal.show();
+});
+
+confirmarCompra.addEventListener("click", () => {
+  modal.hide();
+  window.location.href = "../ticket/ticket.html";
+})
 
 renderizarCarrito();
