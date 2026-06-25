@@ -1,4 +1,5 @@
 // REFERENCIAS DEL DOM
+// REFERENCIAS DEL DOM
 const btnDescargar = document.getElementById("btn-descargar");
 const btnSalir = document.getElementById("btn-salir");
 const contenedorProductos = document.getElementById("contenedor-productos");
@@ -69,6 +70,7 @@ document.addEventListener("DOMContentLoaded", inicializarTicket);
 btnDescargar.addEventListener("click", async () => {
     const { jsPDF } = window.jspdf;
     const ticket = document.getElementById("ticket");
+    const ticket = document.getElementById("ticket");
 
     btnDescargar.style.display = "none";
     btnSalir.style.display = "none";
@@ -79,17 +81,33 @@ btnDescargar.addEventListener("click", async () => {
     });
     
     const imgData = canvas.toDataURL("image/png");
+    const canvas = await html2canvas(ticket, {
+        scale: 2,
+        backgroundColor: "#ffffff",
+    });
+    
+    const imgData = canvas.toDataURL("image/png");
     const pdf = new jsPDF({
+        orientation: "portrait",
+        unit: "px",
+        format: [canvas.width / 2, canvas.height / 2],
         orientation: "portrait",
         unit: "px",
         format: [canvas.width / 2, canvas.height / 2],
     });
 
     pdf.addImage(imgData, "PNG", 0, 0, canvas.width / 2, canvas.height / 2);
+    pdf.addImage(imgData, "PNG", 0, 0, canvas.width / 2, canvas.height / 2);
     pdf.save(`ticket-${Date.now()}.pdf`);
 
     btnDescargar.style.display = "block";
     btnSalir.style.display = "block";
+});
+
+// Limpieza de memoria al salir
+btnSalir.addEventListener("click", () => {
+    localStorage.removeItem("carrito");
+    localStorage.removeItem("fechaCompra");
 });
 
 // Limpieza de memoria al salir
