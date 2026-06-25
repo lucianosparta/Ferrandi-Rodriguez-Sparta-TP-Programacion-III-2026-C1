@@ -23,7 +23,11 @@ const obtenerProductoPorIdDB = async (id) => {
 const crearProductoDB = async (datos, nombreImagen) => {
   try {
     const nuevoProducto = await Producto.create({
-      ...datos,
+      nombre: datos.nombre,
+      descripcion: datos.descripcion,
+      categoria: datos.categoria,
+      precio: datos.precio,
+      stock: datos.stock,
       imagen: nombreImagen,
       activo: true
     });
@@ -42,9 +46,18 @@ const actualizarProductoDB = async (id, datos, nombreImagen) => {
     }
 
     await producto.update({
-      ...datos,
-      ...(nombreImagen && { imagen: nombreImagen })
+      nombre: datos.nombre,
+      descripcion: datos.descripcion,
+      categoria: datos.categoria,
+      precio: datos.precio,
+      stock: datos.stock
     });
+    
+    if (nombreImagen) {
+      await producto.update({
+        imagen: nombreImagen
+      });
+    }
 
     return producto;
   } catch (error) {
@@ -102,8 +115,14 @@ const obtenerVentasDB = async () => {
     // Mapear productos desde los detalles
     const ventasConProductos = ventas.map(venta => {
       return {
-        ...venta.toJSON(),
-        productos: venta.detalles ? venta.detalles.map(d => d.Producto) : []
+        id: venta.id,
+        fecha: venta.fecha,
+        total: venta.total,
+        usuarioId: venta.usuarioId,
+        detalles: venta.detalles,
+        productos: venta.detalles
+          ? venta.detalles.map(d => d.Producto)
+          : []
       };
     });
 

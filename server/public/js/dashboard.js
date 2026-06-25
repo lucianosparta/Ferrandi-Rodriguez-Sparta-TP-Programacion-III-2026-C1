@@ -43,8 +43,8 @@ function mostrarSeccion(seccion) {
 }
 
 function logout() {
-    localStorage.removeItem('adminUser');
-    window.location.href = '../login/index.html';
+    localStorage.removeItem("adminUser");
+    window.location.href = "/bienvenida/index.html";
 }
 
 document.addEventListener('DOMContentLoaded', () => {
