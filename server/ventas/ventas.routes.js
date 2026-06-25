@@ -1,15 +1,23 @@
-const { buscarVentas, buscarVentasPorId, crearVenta, modificarVenta, eliminarVenta } = require("./ventas.controller");
+const {
+  buscarVentas,
+  buscarVentasPorId,
+  crearVenta,
+  modificarVenta,
+  eliminarVenta,
+} = require("./ventas.controller");
+
+const { validarId, validarVenta } = require("./ventas.middlewares");
 
 const ventaRouter = require("express").Router();
 
 ventaRouter.get("/", buscarVentas);
 
-ventaRouter.get("/:id", buscarVentasPorId);
+ventaRouter.get("/:id", validarId, buscarVentasPorId);
 
-ventaRouter.post("/", crearVenta);
+ventaRouter.post("/", validarVenta, crearVenta);
 
-ventaRouter.put("/:id", modificarVenta);
+ventaRouter.put("/:id", validarId, validarVenta, modificarVenta);
 
-ventaRouter.delete("/:id", eliminarVenta);
+ventaRouter.delete("/:id", validarId, eliminarVenta);
 
 module.exports = ventaRouter;
