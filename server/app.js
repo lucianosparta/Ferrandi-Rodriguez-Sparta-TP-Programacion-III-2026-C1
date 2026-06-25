@@ -21,6 +21,7 @@ app.set("views",  path.join(__dirname, "views"));
 
 // Servir archivos estáticos
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "..", "client")));
 
 const productosRoutes = require("./productos/productos.routes");
 const usuariosRoutes = require("./usuarios/usuarios.routes")
