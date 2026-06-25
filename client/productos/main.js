@@ -18,7 +18,7 @@ function renderizarProductos(productos) {
         const tarjeta = document.createElement("div");
         tarjeta.classList.add("col");
 
-        const imagenSrc = producto.imagen || "../images/logo.png";
+        const imagenSrc = producto.imagen ? `http://localhost:3000/${producto.imagen}` : "../images/logo.png";
 
         tarjeta.innerHTML = `
           <div class="card h-100 shadow-sm">
@@ -31,7 +31,7 @@ function renderizarProductos(productos) {
               <p class="card-text text-secondary small flex-grow-1">
                 ${producto.descripcion ?? ""}
               </p>
-              <h4 class="fw-bold my-3 text-dark">$${producto.precio}</h4>
+              <h4 class="fw-bold my-3 card-title">$${producto.precio}</h4>
               <p class="small text-muted mb-2">Stock: ${producto.stock}</p>
               <div class="mt-auto">
                 <button class="btn btn-primary btn-sm w-100 fw-bold btn-add">AÑADIR</button>

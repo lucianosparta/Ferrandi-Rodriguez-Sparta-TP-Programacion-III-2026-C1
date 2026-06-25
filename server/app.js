@@ -35,8 +35,11 @@ app.use("/productos", productosRoutes);
 app.use("/usuarios", usuariosRoutes);
 app.use("/detalle-venta", detalleVentaRoutes);
 app.use("/ventas", ventaRoutes);
-//Administrador (EJS)
+// Administrador (EJS)
 app.use("/admin", adminRoutes);
+// Carpeta de imágenes estática
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 
 // Definicion de puertos 
 const port = process.env.PORT || 3000;
