@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
   <link rel="shortcut icon" href="../images/favicon.ico" type="image/icon">
   <script src="../util/theme.js"></script>
@@ -68,13 +69,29 @@
           <span id="total">$0.00</span>
         </h4>
   
-        <form action="../ticket/ticket.html">
           <button id="btn-pago" class="btn btn-purple fw-bold px-4">
             Proceder al pago
           </button>
-        </form>
       </div>
     </div>
+    <!-- MODAL CONFIRMAR -->
+    <div class="modal fade" id="modalConfirmar" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirmar compra</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+        <div class="modal-body">
+          <strong>¿Desea confirmar el pedido?</strong>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button id="confirmarCompra" class="btn btn-purple">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
   </main>
 
   <footer class="bg-body-tertiary border-top py-4 text-center">
@@ -85,6 +102,7 @@
     </div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
   <script src="carrito.js"></script>
 </body>
 </html>
