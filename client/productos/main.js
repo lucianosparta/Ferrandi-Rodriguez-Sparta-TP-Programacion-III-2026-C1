@@ -76,6 +76,7 @@ function agregarAlCarrito(producto) {
         carrito.push({
             id: producto.id,
             nombre: producto.nombre,
+            categoria: producto.categoria,
             precio: producto.precio,
             cantidad: 1
         });

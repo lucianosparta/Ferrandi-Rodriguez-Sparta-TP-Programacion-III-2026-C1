@@ -3,8 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-    <link rel="shortcut icon" href="../images/favicon.ico" type="image/icon">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/icon" />
     <script src="../util/theme.js"></script>
     <title>FRS Gaming</title>
     <link
@@ -15,7 +18,6 @@
     />
   </head>
   <body class="d-flex flex-column min-vh-100">
-    
     <!-- BARRA DE NAVEGACIÓN -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
       <div class="container-fluid">
@@ -29,86 +31,83 @@
           />
           FRS Gaming
         </a>
-        <button type="button" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2" onclick="cambiarTema()">
-            <span class="material-symbols-outlined d-flex">invert_colors</span>
+        <button
+          type="button"
+          class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2"
+          onclick="cambiarTema()"
+        >
+          <span class="material-symbols-outlined d-flex">invert_colors</span>
         </button>
       </div>
     </nav>
 
     <!-- CONTENEDOR PRINCIPAL -->
     <main class="container my-5 flex-grow-1">
-
       <h1 class="text-center fw-bold text-primary mb-4">¡COMPRA EXITOSA!</h1>
 
       <!-- CONTENEDOR DEL TICKET -->
-      <div class="card mx-auto shadow-sm" style="max-width: 500px;">
+      <div id="ticket" class="card mx-auto shadow-sm" style="max-width: 500px">
         <div class="card-body p-4">
           <div class="text-center my-3">
             <h3 class="fw-bold mb-0">FRS GAMING</h3>
           </div>
           <hr />
-          <div class="d-flex justify-content-between my-2 text-uppercase fw-semibold small">
-            <span>Cliente: <strong class="text-primary">FULANITO</strong></span>
-            <span>Fecha: <strong class="text-primary">25/05/2026</strong></span>
+          <div
+            class="d-flex justify-content-between my-2 text-uppercase fw-semibold small"
+          >
+            <span
+              >Cliente:
+              <strong id="nombre-cliente" class="text-primary"></strong
+            ></span>
+            <!-- Apilamos la fecha y la hora a la derecha -->
+            <div class="text-end">
+                <div class="mb-1">Fecha: <strong id="fecha-ticket" class="text-primary"></strong></div>
+                <div>Hora: <strong id="hora-ticket" class="text-primary"></strong></div>
+            </div>
           </div>
           <hr />
           <p class="text-muted small fw-semibold mb-3">PRODUCTOS</p>
-          <div class="mb-4">
 
-            <!-- Producto 1 -->
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <div>
-                <h6 class="fw-bold mb-0">Producto 1</h6>
-                <small class="text-muted">Consola - x1 - $1</small>
-              </div>
-              <span class="fw-bold text-dark">$1</span>
-            </div>
-
-            <!-- Producto 2 -->
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <div>
-                <h6 class="fw-bold mb-0">Producto 2</h6>
-                <small class="text-muted">Videojuego - x2 - $1</small>
-              </div>
-              <span class="fw-bold text-dark">$2</span>
-            </div>
-
-            <!-- Producto 3 -->
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <div>
-                <h6 class="fw-bold mb-0">Producto 3</h6>
-                <small class="text-muted">Videojuego - x1 - $1</small>
-              </div>
-              <span class="fw-bold text-dark">$1</span>
-            </div>
-
+          <!-- ACÁ VAN A CARGAR LOS PRODUCTOS DESDE EL JS -->
+          <div id="contenedor-productos" class="mb-4">
+            <!-- Los productos se cargarán dinámicamente -->
           </div>
+
           <hr />
-          <div class="d-flex justify-content-between align-items-center my-3 fs-5 fw-bold text-primary">
+          <div
+            class="d-flex justify-content-between align-items-center my-3 fs-5 fw-bold text-primary"
+          >
             <span>TOTAL</span>
-            <span>$4</span>
+            <!-- ID para el total -->
+            <span id="total-ticket">$0.00</span>
           </div>
           <hr />
           <div class="text-center text-muted small my-3">
             <p class="mb-1">¡Gracias por tu compra!</p>
           </div>
-
         </div>
       </div>
-
-      <!-- BOTONES DE ACCIÓN -->
+      <!-- BOTONES DE ACCIÓN (Corregimos los IDs) -->
       <div class="d-flex justify-content-center gap-3 mt-4">
-        <button class="btn btn-primary px-4 fw-bold">DESCARGAR PDF</button>
-        <button class="btn btn-outline-secondary px-4 fw-bold"><a style="text-decoration: none;" href="../bienvenida/index.html">SALIR</a></button>
+        <button id="btn-descargar" class="btn btn-primary px-4 fw-bold">
+          DESCARGAR PDF
+        </button>
+        <button id="btn-salir" class="btn btn-outline-secondary px-4 fw-bold">
+          <a
+            style="text-decoration: none; color: inherit"
+            href="../bienvenida/index.html"
+            >SALIR</a
+          >
+        </button>
       </div>
-
     </main>
 
     <!-- FOOTER -->
     <footer class="bg-body-tertiary border-top py-4 text-center">
       <div class="container">
         <p class="text-muted small mb-0">
-          Franco Ferreandi - Augusto Rodriguez - Luciano Sparta | Programación III - 2026
+          Franco Ferreandi - Augusto Rodriguez - Luciano Sparta | Programación
+          III - 2026
         </p>
       </div>
     </footer>
@@ -118,5 +117,6 @@
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
+    <script src="main.js"></script>
   </body>
 </html>
