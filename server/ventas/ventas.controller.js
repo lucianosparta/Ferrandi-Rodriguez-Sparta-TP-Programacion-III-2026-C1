@@ -99,7 +99,10 @@ const registrarVenta = async (req, res, next) => {
 
         res.send(venta);
     } catch (error) {
-        next(error);
+      res.status(409).json({
+          message: error.message
+      });
+      next(error);
     }
 };
 

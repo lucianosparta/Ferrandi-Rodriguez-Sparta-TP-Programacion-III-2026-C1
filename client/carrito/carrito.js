@@ -133,16 +133,31 @@ confirmarCompra.addEventListener("click", async () => {
 
     if (!respuesta.ok) {
       const errorData = await respuesta.json();
-      throw new Error(errorData.error || "Error al procesar la compra");
+      throw {
+        status: respuesta.status,
+        message: errorData.message
+      };
     }
 
     modal.hide();
     window.location.href = "../ticket/ticket.html";
   } catch (error) {
     modal.hide();
-    
-    Toastify({
+
+    if (error.status === 409) {
+      Toastify({
       text: error.message,
+      duration: 3000,
+      gravity: "top", 
+      position: "right",
+      backgroundColor: "#dc3545",
+    }).showToast();
+
+      return;
+    }
+
+    Toastify({
+      text: "Ocurrió un error al procesar la compra.",
       duration: 3000,
       gravity: "top", 
       position: "right",
