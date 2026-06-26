@@ -1,4 +1,5 @@
 const multer = require("multer");
+const path = require("path");
 
 const middlewareMulter = multer({
     limits: {
@@ -20,7 +21,7 @@ const middlewareMulter = multer({
             callback(null, `IMG-${Date.now()}.${file.mimetype.split("/")[1]}`);
         },
         destination: (req, file, callback) => {
-            callback(null, "server/uploads/");
+            callback(null, path.join(__dirname, "public/images"));
         },
     }),
 });

@@ -22,6 +22,7 @@ app.set("views",  path.join(__dirname, "views"));
 // Servir archivos estáticos
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "..", "client")));
+app.use("/images", express.static(path.join(__dirname, "public/images")));
 
 const productosRoutes = require("./productos/productos.routes");
 const usuariosRoutes = require("./usuarios/usuarios.routes")
@@ -38,9 +39,6 @@ app.use("/detalle-venta", detalleVentaRoutes);
 app.use("/ventas", ventaRoutes);
 // Administrador (EJS)
 app.use("/admin", adminRoutes);
-// Carpeta de imágenes estática
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-
 
 // Definicion de puertos 
 const port = process.env.PORT || 3000;

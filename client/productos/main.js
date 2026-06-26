@@ -19,7 +19,7 @@ function renderizarProductos(productos) {
     tarjeta.classList.add("col");
 
     const imagenSrc = producto.imagen
-      ? `http://localhost:3000/uploads/${producto.imagen}`
+      ? `http://localhost:3000/images/${producto.imagen}`
       : "../images/logo.png";
 
     tarjeta.innerHTML = `

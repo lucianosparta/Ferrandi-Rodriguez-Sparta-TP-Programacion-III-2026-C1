@@ -52,7 +52,7 @@ const crearProducto = async (req, res, next) => {
     const { nombre, descripcion, categoria, precio, stock, activo } =
       req.body;
 
-    const imagen = req.file ? `uploads/${req.file.filename}` : null;
+    const imagen = req.file ? `images/${req.file.filename}` : null;
 
     const producto = {
       nombre,
