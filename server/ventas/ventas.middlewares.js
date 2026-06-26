@@ -26,4 +26,21 @@ const validarVenta = (req, res, next) => {
   next();
 };
 
-module.exports = { validarId, validarVenta };
+const validarRegistroVenta = (req, res, next) => {
+    const registroVenta = z.object({
+        nombre_cliente: z.string().min(1, "El nombre del cliente es obligatorio"),
+        productos: z.array(
+            z.object({
+                id: z.coerce.number().int().positive(),
+                nombre: z.string(),
+                precio: z.coerce.number().positive(),
+                cantidad: z.coerce.number().int().positive()
+            })
+        ).min(1, "El carrito no puede estar vacío")
+    });
+
+    registroVenta.parse(req.body);
+    next();
+};
+
+module.exports = { validarId, validarVenta, validarRegistroVenta };

@@ -36,7 +36,7 @@ function renderizarCarrito() {
 
   let total = 0;
 
-  carrito.forEach(producto => {
+  carrito.forEach((producto) => {
     const subtotal = producto.precio * producto.cantidad;
     total += subtotal;
 
@@ -68,7 +68,7 @@ function renderizarCarrito() {
 
 function aumentarCantidad(id) {
   const carrito = obtenerCarrito();
-  const producto = carrito.find(p => p.id === id);
+  const producto = carrito.find((p) => p.id === id);
 
   if (producto) {
     producto.cantidad += 1;
@@ -79,7 +79,7 @@ function aumentarCantidad(id) {
 
 function disminuirCantidad(id) {
   const carrito = obtenerCarrito();
-  const producto = carrito.find(p => p.id === id);
+  const producto = carrito.find((p) => p.id === id);
 
   if (producto && producto.cantidad > 1) {
     producto.cantidad -= 1;
@@ -89,7 +89,7 @@ function disminuirCantidad(id) {
 }
 
 function eliminarProducto(id) {
-  const carritoNuevo = obtenerCarrito().filter(p => p.id !== id);
+  const carritoNuevo = obtenerCarrito().filter((p) => p.id !== id);
   guardarCarrito(carritoNuevo);
   renderizarCarrito();
 }
@@ -114,9 +114,34 @@ btnPago.addEventListener("click", () => {
   modal.show();
 });
 
-confirmarCompra.addEventListener("click", () => {
-  modal.hide();
-  window.location.href = "../ticket/ticket.html";
-})
+confirmarCompra.addEventListener("click", async () => {
+  const carrito = obtenerCarrito();
+
+  const nombreCliente = localStorage.getItem("nombreUsuario") || "Cliente";
+  try {
+    const respuesta = await fetch(
+      "http://localhost:3000/ventas/registro-venta",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nombre_cliente: nombreCliente,
+          productos: carrito,
+        }),
+      },
+    );
+
+    if (!respuesta.ok) {
+      const errorData = await respuesta.json();
+      throw new Error(errorData.error || "Error al procesar la compra");
+    }
+
+    modal.hide();
+    window.location.href = "../ticket/ticket.html";
+  } catch (error) {
+    modal.hide();
+    alert(error.message);
+  }
+});
 
 renderizarCarrito();

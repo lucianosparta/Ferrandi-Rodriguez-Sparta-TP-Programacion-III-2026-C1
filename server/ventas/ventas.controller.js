@@ -4,12 +4,13 @@ const {
   crearVentaDB,
   modificarVentaDB,
   eliminarVentaDB,
+  registrarVentaDB,
 } = require("./ventas.service");
 
 // GET /ventas
 const buscarVentas = async (req, res, next) => {
   try {
-    const ventas = await buscarVentasDB;
+    const ventas = await buscarVentasDB();
 
     res.send(ventas);
   } catch (error) {
@@ -90,10 +91,23 @@ const eliminarVenta = async (req, res, next) => {
   }
 };
 
+const registrarVenta = async (req, res, next) => {
+    try {
+        const { nombre_cliente, productos } = req.body;
+
+        const venta = await registrarVentaDB(nombre_cliente, productos);
+
+        res.send(venta);
+    } catch (error) {
+        next(error);
+    }
+};
+
 module.exports = {
   buscarVentas,
   buscarVentasPorId,
   crearVenta,
   modificarVenta,
   eliminarVenta,
+  registrarVenta,
 };

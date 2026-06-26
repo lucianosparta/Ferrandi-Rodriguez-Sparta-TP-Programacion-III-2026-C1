@@ -8,8 +8,8 @@ const buscarPorIdDetalleVentaDB = async (id) => {
   return await DetalleVenta.findByPk(id);
 };
 
-const crearDetalleVentaDB = async (detalleVenta) => {
-  return await DetalleVenta.create(detalleVenta);
+const crearDetalleVentaDB = async (detalleVenta, transaccion = null) => {
+  return await DetalleVenta.create(detalleVenta, { transaction: transaccion });
 };
 
 const modificarDetalleVentaDB = async (id, detalleVenta) => {
