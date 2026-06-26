@@ -9,6 +9,8 @@ const {
   loginUsuarioDB,
 } = require("./usuarios.service");
 
+const bcrypt = require("bcrypt");
+
 // GET /usuarios
 const buscarUsuariosActivos = async (req, res, next) => {
   try {
@@ -51,7 +53,8 @@ const buscarUsuarioPorId = async (req, res, next) => {
 const crearUsuario = async (req, res, next) => {
   try {
     const { email, password, activo } = req.body;
-    const usuario = { email, password, activo };
+    const passwordHasheada = await bcrypt.hash(password, 10);
+    const usuario = { email, password: passwordHasheada, activo };
 
     const usuarioCreado = await crearUsuarioDB(usuario);
 
