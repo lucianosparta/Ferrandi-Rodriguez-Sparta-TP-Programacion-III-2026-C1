@@ -35,7 +35,7 @@ function renderizarProductos(productos) {
                 <p class="small text-muted mb-2">Stock: ${producto.stock}</p>
             <div class="mt-auto">
                 ${producto.stock > 0
-                ? `<button class="btn btn-primary btn-sm w-100 fw-bold btn-add">AÑADIR</button>`
+                ? `<button class="btn btn-purple btn-sm w-100 fw-bold btn-add">AÑADIR</button>`
                 : `<button class="btn btn-secondary btn-sm w-100 fw-bold" disabled>SIN STOCK</button>`
                 }
               </div>

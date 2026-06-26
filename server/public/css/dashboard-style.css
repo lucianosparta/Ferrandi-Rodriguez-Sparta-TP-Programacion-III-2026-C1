@@ -18,6 +18,7 @@
     background-color: #6d28d9;
     border: none;
     color: #fff;
+    font-family: 'Rajdhani', sans-serif;
     font-size: 1rem;
     padding: .65rem;
 }
@@ -32,6 +33,7 @@
     background-color: #a78bfa;
     border: none;
     color: #fff;
+    font-family: 'Rajdhani', sans-serif;
     font-size: 1rem;
     padding: .65rem;
 }
@@ -40,6 +42,10 @@
     background-color: #8b5cf6;
     color: #fff;
     box-shadow: 0 0 0 3px rgba(167,139,250,.2);
+}
+
+.btn-outline-secondary {
+  font-family: 'Rajdhani', sans-serif !important;
 }
 
 /* ===========================
@@ -137,10 +143,12 @@ h4 {
     margin-top: 2rem;
     margin-bottom: 1rem;
     font-weight: 600;
+    font-family: 'Rajdhani', sans-serif;
 }
 
 #h1-title {
     font-size: 2rem;
+    font-family: 'Rajdhani', sans-serif;
 }
 
 /* Modal*/

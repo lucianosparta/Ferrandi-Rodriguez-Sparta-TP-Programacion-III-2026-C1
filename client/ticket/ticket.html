@@ -9,6 +9,8 @@
     />
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/icon" />
     <script src="../util/theme.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Nunito:wght@400;500;600&display=swap" rel="stylesheet">
     <title>FRS Gaming</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -30,7 +32,7 @@
             height="30"
             class="d-inline-block align-text-top"
           />
-          FRS Gaming
+          <strong>FRS Gaming</strong>
         </a>
         <button
           type="button"
@@ -44,7 +46,7 @@
 
     <!-- CONTENEDOR PRINCIPAL -->
     <main class="container my-5 flex-grow-1">
-      <h1 class="text-center fw-bold text-primary mb-4">¡COMPRA EXITOSA!</h1>
+      <h1 class="text-center fw-bold mb-4 title">¡COMPRA EXITOSA!</h1>
 
       <!-- CONTENEDOR DEL TICKET -->
       <div id="ticket" class="card mx-auto shadow-sm" style="max-width: 500px">
@@ -58,12 +60,12 @@
           >
             <span
               >Cliente:
-              <strong id="nombre-cliente" class="text-primary"></strong
+              <strong id="nombre-cliente" class="text-purple"></strong
             ></span>
             <!-- Apilamos la fecha y la hora a la derecha -->
             <div class="text-end">
-                <div class="mb-1">Fecha: <strong id="fecha-ticket" class="text-primary"></strong></div>
-                <div>Hora: <strong id="hora-ticket" class="text-primary"></strong></div>
+                <div class="mb-1">Fecha: <strong id="fecha-ticket" class="text-purple"></strong></div>
+                <div>Hora: <strong id="hora-ticket" class="text-purple"></strong></div>
             </div>
           </div>
           <hr />
@@ -76,7 +78,7 @@
 
           <hr />
           <div
-            class="d-flex justify-content-between align-items-center my-3 fs-5 fw-bold text-primary"
+            class="d-flex justify-content-between align-items-center my-3 fs-5 fw-bold text-purple"
           >
             <span>TOTAL</span>
             <!-- ID para el total -->
@@ -90,7 +92,7 @@
       </div>
       <!-- BOTONES DE ACCIÓN (Corregimos los IDs) -->
       <div class="d-flex justify-content-center gap-3 mt-4">
-        <button id="btn-descargar" class="btn btn-primary px-4 fw-bold">
+        <button id="btn-descargar" class="btn btn-purple px-4 fw-bold">
           DESCARGAR PDF
         </button>
         <button id="btn-salir" class="btn btn-outline-secondary px-4 fw-bold">
