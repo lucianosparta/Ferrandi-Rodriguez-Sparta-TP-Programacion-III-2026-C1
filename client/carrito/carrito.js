@@ -140,7 +140,14 @@ confirmarCompra.addEventListener("click", async () => {
     window.location.href = "../ticket/ticket.html";
   } catch (error) {
     modal.hide();
-    alert(error.message);
+    
+    Toastify({
+      text: error.message,
+      duration: 3000,
+      gravity: "top", 
+      position: "right",
+      backgroundColor: "#dc3545",
+    }).showToast();
   }
 });
 

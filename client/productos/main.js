@@ -23,27 +23,31 @@ function renderizarProductos(productos) {
       : "../images/logo.png";
 
     tarjeta.innerHTML = `
-          <div class="card h-100 shadow-sm">
+        <div class="card h-100 shadow-sm">
             <div class="bg-light" style="height: 220px; overflow: hidden;">
-              <img src="${imagenSrc}" class="card-img-top w-100 h-100" style="object-fit: cover; object-position: center;" alt="${producto.nombre}" />
+                <img src="${imagenSrc}" class="card-img-top w-100 h-100" style="object-fit: cover; object-position: center;" alt="${producto.nombre}" />
             </div>
             <div class="card-body d-flex flex-column">
-              <p class="text-uppercase text-muted small mb-1 fw-semibold">${producto.categoria}</p>
-              <h5 class="card-title fw-bold">${producto.nombre}</h5>
-              <p class="card-text text-secondary small flex-grow-1">
-                ${producto.descripcion ?? ""}
-              </p>
-              <h4 class="fw-bold my-3 card-title">$${producto.precio}</h4>
-              <p class="small text-muted mb-2">Stock: ${producto.stock}</p>
-              <div class="mt-auto">
-                <button class="btn btn-primary btn-sm w-100 fw-bold btn-add">AÑADIR</button>
+                <p class="text-uppercase text-muted small mb-1 fw-semibold">${producto.categoria}</p>
+                <h5 class="card-title fw-bold">${producto.nombre}</h5>
+                <p class="card-text text-secondary small flex-grow-1">${producto.descripcion ?? ""}</p>
+                <h4 class="fw-bold my-3 card-title">$${producto.precio}</h4>
+                <p class="small text-muted mb-2">Stock: ${producto.stock}</p>
+            <div class="mt-auto">
+                ${producto.stock > 0
+                ? `<button class="btn btn-primary btn-sm w-100 fw-bold btn-add">AÑADIR</button>`
+                : `<button class="btn btn-secondary btn-sm w-100 fw-bold" disabled>SIN STOCK</button>`
+                }
               </div>
             </div>
-          </div>
-        `;
-    tarjeta.querySelector(".btn-add").addEventListener("click", () => {
-      agregarAlCarrito(producto);
-    });
+          </div>`;
+           
+    const btnAdd = tarjeta.querySelector(".btn-add");
+    if (btnAdd) {
+        btnAdd.addEventListener("click", () => {
+        agregarAlCarrito(producto);
+        });
+    }
     contenedor.appendChild(tarjeta);
   });
 }

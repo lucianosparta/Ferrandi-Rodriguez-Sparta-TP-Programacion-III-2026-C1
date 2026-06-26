@@ -64,7 +64,7 @@ async function login() {
 }
    
 document.getElementById("acceso").addEventListener("click", () => {
-    emailInput.value = "admin@frsgaming.com";
+    emailInput.value = "email@frsgaming.com";
     passInput.value = "1234root";
 })
     
