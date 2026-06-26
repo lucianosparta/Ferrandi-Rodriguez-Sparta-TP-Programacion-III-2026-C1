@@ -116,9 +116,9 @@ const obtenerVentasDB = async () => {
     const ventasConProductos = ventas.map(venta => {
       return {
         id: venta.id,
-        fecha: venta.fecha,
+        nombre_cliente: venta.nombre_cliente,
+        createdAt: venta.createdAt,
         total: venta.total,
-        usuarioId: venta.usuarioId,
         detalles: venta.detalles,
         productos: venta.detalles
           ? venta.detalles.map(d => d.Producto)
