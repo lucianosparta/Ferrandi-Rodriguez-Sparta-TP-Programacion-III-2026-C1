@@ -61,6 +61,39 @@ function mostrarSeccion(seccion) {
     }
 }
 
+function inicializarModalConfirmacion() {
+
+    const modalElement = document.getElementById("modalConfirmar");
+    
+    if (!modalElement) return;
+
+    const modal = new bootstrap.Modal(modalElement);
+
+    const mensajeModal = document.getElementById("mensajeModal");
+    const botonConfirmar = document.getElementById("confirmarAccion");
+
+    let formularioActual = null;
+
+    document.querySelectorAll(".abrirModal").forEach(boton => {
+
+        boton.addEventListener("click", () => {
+            formularioActual = boton.closest("form");
+            mensajeModal.textContent = boton.dataset.mensaje;
+            modal.show();
+        });
+
+    });
+
+    botonConfirmar.addEventListener("click", () => {
+
+        if (formularioActual) {
+            formularioActual.submit();
+        }
+
+    });
+
+}
+
 function logout() {
     localStorage.removeItem("adminUser");
     window.location.href = "http://127.0.0.1:5500/client/login/index.html";
@@ -70,4 +103,5 @@ document.addEventListener('DOMContentLoaded', () => {
     cargarLocalStorage();
     mostrarMensajeToast();
     mostrarSeccion("productos");
+    inicializarModalConfirmacion();
 });
