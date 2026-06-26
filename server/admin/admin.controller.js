@@ -154,15 +154,18 @@ const {
         { header: "ID", key: "id", width: 10 },
         { header: "Cliente", key: "nombre_cliente", width: 20 },
         { header: "Total", key: "total", width: 12 },
+        { header: "Productos", key: "productos", width: 40},
         { header: "Fecha", key: "createdAt", width: 20 }
       ];
   
       // Datos
       ventas.forEach(venta => {
+        const productosString = venta.productos && venta.productos.length > 0 ? venta.productos.map(p => p.nombre).join(', ') : '';
         worksheet.addRow({
           id: venta.id,
           nombre_cliente: venta.nombre_cliente,
           total: venta.total,
+          productos: productosString,
           createdAt: new Date(venta.createdAt).toLocaleDateString("es-AR")
         });
       });
